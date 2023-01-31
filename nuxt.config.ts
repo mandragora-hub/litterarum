@@ -4,4 +4,13 @@ export default defineNuxtConfig({
     strict: true,
     typeCheck: true,
   },
+
+  modules: [
+    "@vueuse/nuxt",
+    "@nuxtjs/tailwindcss",
+    "@nuxtjs/i18n",
+    "@pinia/nuxt",
+    "@nuxt/content",
+    "@nuxt/image-edge",
+  ],
 });
