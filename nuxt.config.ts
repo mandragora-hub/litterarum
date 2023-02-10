@@ -12,6 +12,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxt/content",
     "@nuxt/image-edge",
+    "nuxt-icon"
   ],
 
   i18n: {

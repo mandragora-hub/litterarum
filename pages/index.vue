@@ -53,5 +53,9 @@ const { locale, availableLocales } = useLocale();
         +
       </form>
     </div>
+    <div>
+      <Icon name="uil:github" />
+      <Icon name="🚀" />
+    </div>
   </div>
 </template>
