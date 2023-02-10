@@ -13,4 +13,20 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/image-edge",
   ],
+
+  i18n: {
+    locales: [
+      {
+        code: "en",
+        file: "en.json",
+      },
+      {
+        code: "es",
+        file: "es.json",
+      },
+    ],
+    // lazy: true,
+    langDir: "locales",
+    defaultLocale: "en"
+  },
 });

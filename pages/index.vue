@@ -9,9 +9,11 @@ const isDark = usePreferredDark();
 
 const main = useMainStore(); // extract specific store properties
 const { counter, doubleCounter } = storeToRefs(main);
+
+const { locale, availableLocales } = useLocale();
 </script>
 <template>
-  <div>
+  <div class="container mx-auto px-4">
     <h1>Welcome to the homepage</h1>
     <AppAlert> This is an auto-imported component </AppAlert>
 
@@ -36,6 +38,20 @@ const { counter, doubleCounter } = storeToRefs(main);
         DoubleCounter: <span>{{ doubleCounter }}</span>
       </p>
       <button type="button" @click="main.pluOne">Plus one</button>
+    </div>
+    <div>
+      <h1>{{ $t("welcome") }}</h1>
+      +
+      <form>
+        + <label for="locale-select">{{ $t("language") }}: </label> +
+        <select id="locale-select" v-model="locale">
+          +
+          <option v-for="i of availableLocales" :key="i" :value="i">
+            {{ i }}
+          </option>
+        </select>
+        +
+      </form>
     </div>
   </div>
 </template>
