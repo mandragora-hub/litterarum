@@ -15,6 +15,15 @@ export default defineNuxtConfig({
     "nuxt-icon"
   ],
 
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
+  },
+
+  build: {
+    transpile: ['@headlessui/vue'],
+  },
+
   i18n: {
     locales: [
       {
@@ -28,6 +37,6 @@ export default defineNuxtConfig({
     ],
     // lazy: true,
     langDir: "locales",
-    defaultLocale: "en"
+    defaultLocale: "en",
   },
 });
