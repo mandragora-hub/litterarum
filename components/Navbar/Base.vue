@@ -56,68 +56,62 @@ const toggleOptions = (show?: boolean) => {
     <div id="navbar-banner" class="banner">
       <slot name="banner" />
     </div>
-    <div class="max-w-8xl w-full mx-auto">
-      <div class="py-3 lg:px-8 mx-4 lg:mx-0">
-        <div class="relative flex items-center">
-          <!-- drawer:toggle -->
-          <div
-            v-if="$slots['drawer']"
-            class="lg:hidden flex items-center self-center justify-center mr-2"
+    <Container class="py-3">
+      <div class="flex items-center">
+        <!-- drawer:toggle -->
+        <div
+          v-if="$slots['drawer']"
+          class="lg:hidden flex items-center self-center justify-center mr-2"
+        >
+          <button
+            class="flex items-center focus:outline-none"
+            aria-label="Toggle Drawer Menu"
+            @click="toggleDrawer()"
           >
-            <button
-              class="flex items-center focus:outline-none"
-              aria-label="Toggle Drawer Menu"
-              @click="toggleDrawer()"
+            <span
+              class="flex items-center text-gray-600 dark:text-gray-300 text-lg"
+              aria-hidden="true"
             >
-              <span
-                class="flex items-center text-gray-600 dark:text-gray-300 text-lg"
-                aria-hidden="true"
-              >
-                <Icon v-if="!showDrawer" name="uil-bars" />
-                <Icon v-else name="uil-times" />
-              </span>
-            </button>
-          </div>
-          <!-- title -->
-          <slot name="title">
-            <NuxtLink
-              tag="a"
-              class="mr-3 flex-none overflow-hidden md:w-auto text-md font-bold text-gray-900 dark:text-gray-200"
-              :to="{ name: 'index' }"
-            >
-              <span class="sr-only">home</span>
-              <span class="flex items-center">
-                <Icon
-                  name="simple-icons:nuxtdotjs"
-                  class="inline-block mr-2 text-lg text-primary-500"
-                />
-                {{ app.name }}
-              </span>
-            </NuxtLink>
-          </slot>
-          <!-- menu -->
-          <slot name="menu" />
-          <!-- options:toggle -->
-          <div
-            v-if="$slots['options']"
-            class="flex-1 flex justify-end lg:hidden"
+              <Icon v-if="!showDrawer" name="uil-bars" />
+              <Icon v-else name="uil-times" />
+            </span>
+          </button>
+        </div>
+        <!-- title -->
+        <slot name="title">
+          <NuxtLink
+            tag="a"
+            class="mr-3 flex-none overflow-hidden md:w-auto text-md font-bold text-gray-900 dark:text-gray-200"
+            to="/"
           >
-            <button
-              class="flex items-center focus:outline-none"
-              aria-label="Toggle Options Menu"
-              @click="toggleOptions()"
+            <span class="sr-only">home</span>
+            <span class="flex items-center">
+              <Icon
+                name="simple-icons:nuxtdotjs"
+                class="inline-block mr-2 text-lg text-primary-500"
+              />
+              {{ app.name }}
+            </span>
+          </NuxtLink>
+        </slot>
+        <slot name="menu" />
+        <!-- options:toggle -->
+        <div v-if="$slots['options']" class="flex-1 flex justify-end lg:hidden">
+          <button
+            class="flex items-center focus:outline-none"
+            aria-label="Toggle Options Menu"
+            @click="toggleOptions()"
+          >
+            <span
+              class="flex items-center text-gray-600 dark:text-gray-300 text-sm"
+              aria-hidden="true"
             >
-              <span
-                class="flex items-center text-gray-600 dark:text-gray-300 text-sm"
-                aria-hidden="true"
-              >
-                <icon-fa-solid:ellipsis-v />
-              </span>
-            </button>
-          </div>
+              <Icon name="fa-solid:ellipsis-v" />
+            </span>
+          </button>
         </div>
       </div>
-    </div>
+    </Container>
     <ClientOnly>
       <Teleport to="#app-after">
         <!-- drawer -->
@@ -146,7 +140,7 @@ const toggleOptions = (show?: boolean) => {
 </template>
 
 <style scoped>
-/* .slide-fade-from-up-enter-active {
+.slide-fade-from-up-enter-active {
   transition: all 0.3s ease-out;
 }
 .slide-fade-from-up-leave-active {
@@ -160,13 +154,13 @@ const toggleOptions = (show?: boolean) => {
 
 a.router-link-active {
   font-weight: bold;
-} */
+}
 /* a.router-link-exact-active {
-  color: theme("colors.slate.900");
+  color: theme('colors.slate.900');
 } */
 /* html.dark {
   a.router-link-exact-active {
-    color: "white";
+    color: theme('colors.white');
   }
 } */
 </style>

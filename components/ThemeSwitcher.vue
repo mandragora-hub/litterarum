@@ -5,31 +5,30 @@ import {
   ListboxLabel,
   ListboxOptions,
   ListboxOption,
-} from '@headlessui/vue'
+} from "@headlessui/vue";
 
 // micro compiler
 const props = defineProps({
   type: {
     type: String,
-    default: 'dropdown-right-top',
+    default: "dropdown-right-top",
   },
-})
+});
 
 // state
-type IThemeSettingOptions = 'dark' | 'light' | 'system' | 'realtime'
-const themeSetting = useState<IThemeSettingOptions>('theme.setting')
-const currentStyle = toRef(props, 'type')
+type IThemeSettingOptions = "dark" | "light" | "system" | "realtime";
+const themeSetting = useState<IThemeSettingOptions>("theme.setting");
+const currentStyle = toRef(props, "type");
 
 const availableThemes: {
-  key: IThemeSettingOptions
-  text: string
+  key: IThemeSettingOptions;
+  text: string;
 }[] = [
-  { key: 'light', text: 'Light' },
-  { key: 'dark', text: 'Dark' },
-  { key: 'system', text: 'System' },
-  { key: 'realtime', text: 'Realtime' },
-]
-
+  { key: "light", text: "Light" },
+  { key: "dark", text: "Dark" },
+  { key: "system", text: "System" },
+  { key: "realtime", text: "Realtime" },
+];
 </script>
 
 <template>
@@ -41,7 +40,7 @@ const availableThemes: {
       class="relative flex items-center"
     >
       <ListboxLabel class="sr-only">
-        {{ $t('components.theme_switcher.theme') }}
+        {{ $t("components.theme_switcher.theme") }}
       </ListboxLabel>
       <ListboxButton
         type="button"
@@ -49,10 +48,10 @@ const availableThemes: {
         class="transition-colors duration-300"
       >
         <span class="flex justify-center items-center dark:hidden">
-          <IconUil:sun />
+          <Icon name="uil:sun" />
         </span>
         <span class="justify-center items-center hidden dark:flex">
-          <IconUil:moon />
+          <Icon name="uil:moon" />
         </span>
       </ListboxButton>
       <ListboxOptions
@@ -71,10 +70,10 @@ const availableThemes: {
           }"
         >
           <span class="text-sm mr-2 flex items-center">
-            <IconUil:sun v-if="theme.key === 'light'" />
-            <IconUil:moon v-else-if="theme.key === 'dark'" />
-            <IconUil:laptop v-else-if="theme.key === 'system'" />
-            <IconUil:clock v-else-if="theme.key === 'realtime'" />
+            <Icon v-if="theme.key === 'light'" name="uil:sun" />
+            <Icon v-else-if="theme.key === 'dark'" name="uil:moon" />
+            <Icon v-else-if="theme.key === 'system'" name="uil:laptop" />
+            <Icon v-else-if="theme.key === 'realtime'" name="uil:clock" />
           </span>
           {{ theme.text }}
         </ListboxOption>

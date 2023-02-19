@@ -4,22 +4,14 @@
     <div id="app-before"></div>
     <div class="flex flex-col min-h-screen">
       <slot name="header">
-        <Navbar>
-          <template #drawer>
-            <Sidebar mode="mobile" />
-          </template>
-        </Navbar>
+        <Navbar />
       </slot>
-      <div class="flex-1 w-full flex flex-col">
-        <div class="relative flex-1 mx-auto max-w-8xl w-full h-full">
-          <div class="flex flex-col">
-            <slot />
-            <slot name="footer">
-              <Footer />
-            </slot>
-          </div>
-        </div>
-      </div>
+      <main class="flex-1 mx-auto w-full h-full my-4">
+        <slot />
+      </main>
+      <slot name="footer">
+        <Footer />
+      </slot>
     </div>
     <slot name="app-after" />
     <div id="app-after"></div>

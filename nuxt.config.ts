@@ -20,9 +20,12 @@ export default defineNuxtConfig({
     layoutTransition: { name: "layout", mode: "out-in" },
   },
 
-  build: {
-    transpile: ['@headlessui/vue'],
+  experimental: {
+    reactivityTransform: true,
   },
+  // build: {
+  //   transpile: ['@headlessui/vue'],
+  // },
 
   i18n: {
     locales: [

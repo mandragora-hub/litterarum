@@ -1,5 +1,5 @@
 <template>
-  <BaseNavbar>
+  <NavbarBase>
     <template #menu>
       <div class="relative hidden lg:flex items-center ml-auto">
         <div class="flex items-center justify-center">
@@ -12,15 +12,15 @@
           <ThemeSwitcher />
           <Anchor
             class="hover:no-underline hover:text-slate-900 hover:dark:text-white text-lg flex self-center items-center"
-            href="https://github.com/viandwi24/nuxt3-awesome-starter"
+            href="https://github.com/mandragora-hub/litterarum"
             title="Github"
           >
-            <Icon name="mdi-github-face" />
+            <Icon name="mdi:github-face" />
           </Anchor>
         </div>
       </div>
     </template>
-    <!-- <template #options="{ toggleOptions }">
+    <template #options="{ toggleOptions }">
       <ActionSheet @on-close="toggleOptions(false)">
         <ActionSheetBody>
           <ActionSheetHeader text="Menu" />
@@ -40,7 +40,7 @@
         <Button
           type="secondary"
           title="Github"
-          href="https://github.com/viandwi24/nuxt3-awesome-starter"
+          href="https://github.com/mandragora-hub/litterarum"
         >
           <Icon name="mdi-github-face" />
 
@@ -52,9 +52,9 @@
           @click.prevent="toggleOptions(false)"
         />
       </ActionSheet>
-    </template> -->
-    <template #drawer>
-      <slot name="drawer" />
     </template>
-  </BaseNavbar>
+    <template #drawer>
+      <NavbarDrawer />
+    </template>
+  </NavbarBase>
 </template>

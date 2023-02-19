@@ -4,7 +4,7 @@
       <div
         class="absolute inset-y-0 left-0 flex items-center px-3 cursor-pointer"
       >
-        <Icon name="mdi-search" />
+        <Icon name="ic:outline-search" />
       </div>
       <input
         type="search"

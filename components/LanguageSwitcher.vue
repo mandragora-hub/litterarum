@@ -5,32 +5,30 @@ import {
   ListboxLabel,
   ListboxOptions,
   ListboxOption,
-} from '@headlessui/vue'
+} from "@headlessui/vue";
 
 const availableLocales = {
   en: {
-    name: 'English',
-    iso: 'en',
-    flag: '🇺🇸',
+    name: "English",
+    iso: "en",
+    flag: "🇺🇸",
   },
   es: {
-    name: 'Español',
-    iso: 'es',
-    flag: '🇮🇩',
+    name: "Español",
+    iso: "es",
+    flag: "🇪🇸️",
   },
-}
+};
 
-// micro compiler
 const props = defineProps({
   type: {
     type: String,
-    default: 'dropdown-right-top',
+    default: "dropdown-right-top",
   },
-})
+});
 
-// state
-const currentStyle = toRef(props, 'type')
-const localeSetting = useState<string>('locale.setting')
+const currentStyle = toRef(props, "type");
+const localeSetting = useState<string>("locale.setting");
 </script>
 
 <template>
@@ -48,7 +46,7 @@ const localeSetting = useState<string>('locale.setting')
         class="transition-colors duration-300"
       >
         <span class="justify-center items-center flex">
-          <IconLa:language />
+          <Icon name="la:language" />
         </span>
       </ListboxButton>
       <ListboxOptions
