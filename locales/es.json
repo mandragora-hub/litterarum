@@ -1,0 +1,22 @@
+{
+  "hello": "Hola!",
+  "language": "Idioma",
+  "welcome": "Bienvenido",
+  "components": {
+    "search_bar": {
+      "placeholder": "Buscar..."
+    },
+    "language_switcher": {
+      "change_language": "cambiar idioma"
+    },
+    "theme_switcher": {
+      "change_theme": "cambiar tema",
+      "theme": "tema"
+    }
+  },
+  "pages": {
+    "demo": {
+      "message": "El rápido zorro marrón salta sobre el perro perezoso."
+    }
+  }
+}

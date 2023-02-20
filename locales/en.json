@@ -1,0 +1,22 @@
+{
+  "hello": "Hello!",
+  "language": "language",
+  "welcome": "welcome",
+  "components": {
+    "search_bar": {
+      "placeholder": "Search..."
+    },
+    "language_switcher": {
+      "change_language": "change language"
+    },
+    "theme_switcher": {
+      "change_theme": "change theme",
+      "theme": "theme"
+    }
+  },
+  "pages": {
+    "demo": {
+      "message": "The quick brown fox jumps over the lazy dog"
+    }
+  }
+}
