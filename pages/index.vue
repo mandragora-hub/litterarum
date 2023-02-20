@@ -104,6 +104,15 @@ const setHeadlessuiToggleTest = (e: boolean) => (headlessuiToggleTest = e);
           >
         </div>
       </div>
+      <div class="border p-4 my-2">
+        <h2 class="text-lg font-bold">Testing nuxt image (@nuxt/image-edge)</h2>
+        <nuxt-img
+          class="mx-auto"
+          src="nuxt-logo.svg"
+          width="100"
+          height="100"
+        />
+      </div>
     </div>
   </Container>
 </template>
