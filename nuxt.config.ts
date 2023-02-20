@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxt/content",
     "@nuxt/image-edge",
-    "nuxt-icon"
+    "nuxt-icon",
   ],
 
   app: {
@@ -23,9 +23,6 @@ export default defineNuxtConfig({
   experimental: {
     reactivityTransform: true,
   },
-  // build: {
-  //   transpile: ['@headlessui/vue'],
-  // },
 
   i18n: {
     locales: [
