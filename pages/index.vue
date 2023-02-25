@@ -2,6 +2,9 @@
 import { storeToRefs } from "pinia";
 import { useMainStore } from "~/stores/counter";
 
+// litterarum'api health check
+const healthcheck = await healthcheckServer();
+
 // tracks mouse position
 const { x, y } = useMouse();
 
@@ -113,6 +116,19 @@ const setHeadlessuiToggleTest = (e: boolean) => (headlessuiToggleTest = e);
           height="100"
         />
       </div>
+      <ClientOnly>
+        <div class="border p-4 my-2">
+          <h2 class="text-lg font-bold">Litterarum's api: healthcheck</h2>
+          <div v-if="healthcheck">
+            <p>Uptime: {{ healthcheck.uptime }}</p>
+            <p>message: {{ healthcheck.message }}</p>
+            <p>timestamp: {{ healthcheck.timestamp }}</p>
+          </div>
+          <div v-else>
+            <p>Unable to find healthcheck</p>
+          </div>
+        </div>
+      </ClientOnly>
     </div>
   </Container>
 </template>
