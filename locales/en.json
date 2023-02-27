@@ -4,7 +4,7 @@
   "welcome": "welcome",
   "components": {
     "search_bar": {
-      "placeholder": "Search..."
+      "placeholder": "Search by title, author or keyword..."
     },
     "language_switcher": {
       "change_language": "change language"
@@ -12,6 +12,10 @@
     "theme_switcher": {
       "change_theme": "change theme",
       "theme": "theme"
+    },
+    "hero": {
+      "header": "download free ebooks",
+      "subtitle": "Rediscover the classics with public domain books"
     }
   },
   "pages": {

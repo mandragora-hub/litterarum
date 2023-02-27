@@ -7,9 +7,12 @@ const app = useAppConfig() as AppConfigInput;
 <template>
   <footer class="border-t lg:border-gray-900/10 dark:border-gray-50/[0.2]">
     <Container class="py-4 text-center md:text-left">
-      <div class="mb-1">
-        {{ app.name }}
-      </div>
+      <NuxtLink to="/demo">
+        <div class="flex items-center gap-x-2 mb-1">
+          {{ app.name }}
+          <Icon name="ph:egg-crack-duotone" />
+        </div>
+      </NuxtLink>
       <div class="text-xs text-gray-600 dark:text-gray-400">
         Copyright © 2022 <a :href="app.author.link">{{ app.author.name }}</a
         >. All rights reserved. Made with <span class="text-red-500">❤</span>

@@ -1,12 +1,19 @@
 <template>
   <NavbarBase>
     <template #menu>
-      <div class="relative hidden lg:flex items-center ml-auto">
-        <div class="flex items-center justify-center">
-          <SearchBar />
-        </div>
+      <div
+        class="divide-x space-x-4 relative hidden lg:flex items-center ml-auto"
+      >
+        <Transition>
+          <div
+            v-if="isSearchBarOnNavbar"
+            class="flex items-center justify-center"
+          >
+            <SearchBar size="xs" />
+          </div>
+        </Transition>
         <div
-          class="flex space-x-4 border-l ml-6 pl-6 border-gray-900/10 dark:border-gray-50/[0.2]"
+          class="flex space-x-4 pl-4 border-gray-900/10 dark:border-gray-50/[0.2]"
         >
           <LanguageSwitcher />
           <ThemeSwitcher />
@@ -58,3 +65,15 @@
     </template>
   </NavbarBase>
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

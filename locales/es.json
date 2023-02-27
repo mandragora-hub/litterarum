@@ -4,7 +4,7 @@
   "welcome": "Bienvenido",
   "components": {
     "search_bar": {
-      "placeholder": "Buscar..."
+      "placeholder": "Buscar por título, autor o palabra clave..."
     },
     "language_switcher": {
       "change_language": "cambiar idioma"
@@ -12,6 +12,10 @@
     "theme_switcher": {
       "change_theme": "cambiar tema",
       "theme": "tema"
+    },
+    "hero": {
+      "header": "descargar libros electrónicos gratuitos",
+      "subtitle": "Redescubre los clásicos con libros de dominio público"
     }
   },
   "pages": {
