@@ -2,8 +2,8 @@ import LRU from "lru-cache";
 import { hash as ohash } from "ohash";
 import type { MediaType, PageResult, Result, Book, HealthcheckResult } from "../types";
 
-// const apiBaseUrl = "http://localhost:3000";
-const apiBaseUrl = 'https://litterarum.onrender.com'
+const apiBaseUrl = "http://localhost:3000";
+// const apiBaseUrl = 'https://litterarum.onrender.com'
 const API_VERSION = "api/v1";
 const ACCESS_TOKEN =
   "2d2084688dd7c91302101d5e8887aca2e38b2ac9af499e03b5120499739bc7a80c3e37a1104383eb1d3368ad5370942c63b5994be28a6c36bb1f258512147fa0";
@@ -50,9 +50,10 @@ export function fetchLitterarumApi(
 export function listMedia(
   type: MediaType,
   query: string,
-  page: number
+  page: number,
+  limit = 6
 ): Promise<PageResult<Book>> {
-  return fetchLitterarumApi(`${type}/${query}`, { page });
+  return fetchLitterarumApi(`${type}/${query}`, { page, limit });
 }
 
 export function getBook(id: string): Promise<Result<Book>> {
@@ -62,13 +63,6 @@ export function getBook(id: string): Promise<Result<Book>> {
 export function healthcheckServer(): Promise<HealthcheckResult> {
   return fetchLitterarumApi(`healthcheck`);
 }
-
-// export function getMedia(type: MediaType, id: string): Promise<Book> {
-//   return fetchLitterarumApi(`${type}/${id}`, {
-//     append_to_response: 'videos,credits,images,external_ids,release_dates',
-//     include_image_language: 'en',
-//   })
-// }
 
 // /**
 //  * Get recommended
