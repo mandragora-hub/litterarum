@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Book, MediaType } from '~/types'
+import type { Book, MediaType } from "~/types";
 
 defineProps<{
-  type: MediaType
-  item: Book
-}>()
+  type: MediaType;
+  item: Book;
+}>();
 </script>
 
 <template>
@@ -17,18 +17,18 @@ defineProps<{
         width="400"
         height="600"
         format="webp"
-        src="https://singlecolorimage.com/get/888a85/100x100"
+        :src="item.coverUrl"
         :alt="item.title || item.author.name"
-        class="w-full h-full object-cover"
+        class="w-full h-full rounded-lg object-cover bg-[url('https://singlecolorimage.com/get/888a85/100x100')]"
       />
-      <div v-else class="h-full opacity-10 flex">
-        <Icon name ="mdi-rabbit" class="m-auto text-4xl" />
+      <div v-else class="animate-pulse h-full opacity-10 flex">
+        <Icon name="mdi-rabbit" class="m-auto text-4xl" />
       </div>
     </div>
     <div class="text-left mt-2">
       <h5>{{ item.title }}</h5>
       <p class="text-gray-600">
-        {{ item.author ? item.author.name : 'Anónimo' }}
+        {{ item.author ? item.author.name : "Anónimo" }}
       </p>
     </div>
     <div class="flex text-sm gap-2 items-center">
