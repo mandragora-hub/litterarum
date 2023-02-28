@@ -33,7 +33,11 @@ watch(targetIsVisible, (isVisible) => setSearchBarOnNavbar(!isVisible));
         Search
       </a> -->
       <NuxtLink to="local" class="mt-24 py-2">
-        <Icon name="ph:arrow-bend-left-down" size="1.5em" />
+        <Icon
+          class="animate-bounce"
+          name="ph:arrow-bend-left-down"
+          size="1.5em"
+        />
       </NuxtLink>
     </div>
   </section>
