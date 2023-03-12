@@ -21,6 +21,22 @@
   "pages": {
     "demo": {
       "message": "The quick brown fox jumps over the lazy dog"
+    },
+    "book": {
+      "pages": "pages",
+      "publication_date": "publication date",
+      "language": "language",
+      "file": "file",
+      "isbn": "isbn",
+      "about_this_book": "about this book",
+      "date_added": "date added",
+      "total_views": "total views",
+      "downloaded": "downloaded"
     }
+  },
+  "others": {
+    "hours": "hour",
+    "minutes": "minutes",
+    "words": "words"
   }
 }

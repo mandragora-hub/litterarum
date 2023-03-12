@@ -48,9 +48,14 @@ export interface Book {
   _id: string;
   title: string;
   subtitle?: string;
-  coverUrl?: string;
   basename: string;
+  coverUrl?: string;
+  readTime?: number; // ?note: time in milliseconds
+  wordCount?: number;
+  pages?: number;
   downloaded: number;
   author: Author;
   tags: Tag[];
 }
+
+

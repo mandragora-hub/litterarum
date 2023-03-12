@@ -2,10 +2,10 @@
 const props = withDefaults(
   defineProps<{
     text: string;
-    type: string;
-    size: string;
-    to: string | object | undefined;
-    href: string | undefined;
+    type?: string;
+    size?: string;
+    to?: string | object | undefined;
+    href?: string | undefined;
   }>(),
   {
     text: "",
@@ -27,7 +27,7 @@ const styles = reactive<{
   [key: string]: string;
 }>({
   none: "",
-  primary: "text-white bg-primary-500 hover:bg-primary-400 border-primary-500",
+  primary: "text-white bg-blue-500 hover:bg-blue-400 border-blue-500",
   secondary:
     "text-slate-800 bg-gray-200 border-gray-200 hover:bg-gray-300 dark:text-white dark:border-slate-800 dark:bg-slate-800 dark:hover:bg-slate-700",
   opposite:

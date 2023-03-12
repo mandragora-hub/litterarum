@@ -31,11 +31,6 @@ defineProps<{
         {{ item.author ? item.author.name : "Anónimo" }}
       </p>
     </div>
-    <div class="flex text-sm gap-2 items-center">
-      <StarsRate class="w-20" :value="item.downloaded" />
-      <div class="opacity-60">
-        {{ item.downloaded }}
-      </div>
-    </div>
+    <Rating :value="item.downloaded" />
   </NuxtLink>
 </template>
