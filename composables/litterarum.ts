@@ -1,6 +1,12 @@
 import LRU from "lru-cache";
 import { hash as ohash } from "ohash";
-import type { MediaType, PageResult, Result, Book, HealthcheckResult } from "../types";
+import type {
+  MediaType,
+  PageResult,
+  Result,
+  Book,
+  HealthcheckResult,
+} from "../types";
 
 const apiBaseUrl = "http://localhost:3000";
 // const apiBaseUrl = 'https://litterarum.onrender.com'
