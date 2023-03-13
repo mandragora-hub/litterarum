@@ -31,7 +31,9 @@
       "about_this_book": "about this book",
       "date_added": "date added",
       "total_views": "total views",
-      "downloaded": "downloaded"
+      "downloaded": "downloaded",
+      "tags": "tags",
+      "share": "share"
     }
   },
   "others": {

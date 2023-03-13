@@ -7,7 +7,7 @@ const bookId = route.params.id as string;
 const book = await getBook(bookId);
 // import { capitalize } from '~/utils/str'
 const { t } = useI18n();
-const queries = $computed(() => [QUERY_LIST.book[0]]);
+const queries = $computed(() => [QUERY_LIST.book[5]]);
 
 const highlight = reactive([
   {
@@ -88,8 +88,9 @@ const items = reactive([
 <template>
   <Container>
     <Breadcrumbs :items="items" class="-mt-4 mb-6" />
-
-    <div class="flex flex-col lg:flex-row">
+    <!-- book overview -->
+    <div class="flex flex-col lg:flex-row border-b pb-8 space-y-4">
+      <!-- image o book cover -->
       <div
         class="h-96 w-full mr-10 rounded-lg bg-gray-400 aspect-[10/16] transition duration-400 hover:scale-105 hover:z-10"
       >
@@ -106,8 +107,9 @@ const items = reactive([
           <Icon name="mdi:rabbit" class="m-auto text-4xl" />
         </div>
       </div>
+      <!-- information -->
       <div class="flex flex-col">
-        <header class="">
+        <header class="border-b mb-4">
           <h1 class="text-3xl font-bold capitalize">
             {{ book.data.title }}
             <span v-if="book.data.subtitle" class="text-lg font-light">{{
@@ -145,28 +147,82 @@ const items = reactive([
             <span class="whitespace-nowrap capitalize">{{ i.value }}</span>
           </div>
         </div>
-
-        <div class="grid grid-rows-2 lg:grid-cols-2 my-4 lg:divide-x">
-          <div class="lg:px-10 first:pl-0">
-            <Button text="Download PDF" size="md" class="uppercase" />
+        <!-- download options buttons  -->
+        <div class="grid grid-cols-2 gap-4 mt-4">
+          <Button text="Download PDF" size="md" class="uppercase" />
+          <!-- <Button text="Download Epub" type="secondary" size="md" class="uppercase" /> -->
+          <Button
+            text="Read online"
+            type="secondary"
+            size="md"
+            class="uppercase"
+          />
+          <!-- <Button text="Send via e-mail" type="secondary" size="md" class="uppercase" /> -->
+        </div>
+      </div>
+      <!-- About book, tags, and share options -->
+      <div class="w-full flex flex-col lg:pl-24 space-y-8 divide-y">
+        <div class="flex flex-col space-y-2">
+          <h3 class="font-bold text-xl capitalize">
+            {{ $t("pages.book.tags") }}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <div
+              v-for="(item, key) in ['test', 'tags', 'and', 'other', 'course']"
+              :key="key"
+              class="text-sm cursor-pointer border bg-slate-50 hover:bg-slate-100 px-2 py-1 rounded capitalize"
+            >
+              <span>{{ item }}</span>
+            </div>
           </div>
-          <div class="lg:px-10 last:pr-0 flex flex-col space-y-2">
-            <h3 class="font-bold capitalize">
-              {{ $t("pages.book.about_this_book") }}
-            </h3>
-            <ol class="ml-4 text-gray-600 flex flex-col space-y-2">
-              <li
-                v-for="item of aboutThisBook"
-                :key="item.name"
-                class="flex flex-row space-x-1 items-center"
-              >
-                <Icon :name="item.icon" size="1em" />
-                <p class="text-md capitalize">
-                  {{ $t(item.name) }}: {{ item.value }}
-                </p>
-              </li>
-            </ol>
+        </div>
+        <div class="flex flex-col space-y-2 pt-8 first:pt-0">
+          <h3 class="font-bold text-xl capitalize">
+            {{ $t("pages.book.share") }}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <button
+              type="button"
+              class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 rounded p-2 text-center dark:focus:ring-[#3b5998]/55"
+            >
+              <Icon name="mdi:facebook" size="1.5em" />
+            </button>
+            <button
+              type="button"
+              class="text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 rounded p-2 text-center dark:focus:ring-[#1da1f2]/55"
+            >
+              <Icon name="mdi:twitter" size="1.5em" />
+            </button>
+            <button
+              type="button"
+              class="text-white bg-[#128C7E] hover:bg-[#128C7E]/90 focus:ring-4 focus:outline-none focus:ring-[#128C7E]/50 rounded p-2 text-center dark:focus:ring-[#128C7E]/55"
+            >
+              <Icon name="mdi:whatsapp" size="1.5em" />
+            </button>
+            <button
+              type="button"
+              class="text-gray-400 border-black border border-dashed rounded p-2 text-center"
+            >
+              <Icon name="mdi:plus" size="1.5em" />
+            </button>
           </div>
+        </div>
+        <div class="flex flex-col space-y-2 pt-8">
+          <h3 class="font-bold text-xl capitalize">
+            {{ $t("pages.book.about_this_book") }}
+          </h3>
+          <ol class="text-gray-600 flex flex-col space-y-2">
+            <li
+              v-for="item of aboutThisBook"
+              :key="item.name"
+              class="flex flex-row space-x-1 items-center"
+            >
+              <Icon :name="item.icon" size="1em" />
+              <p class="text-md capitalize">
+                {{ $t(item.name) }}: {{ item.value }}
+              </p>
+            </li>
+          </ol>
         </div>
       </div>
     </div>

@@ -31,7 +31,9 @@
       "about_this_book": "acerca de este libro",
       "date_added": "fecha agregado",
       "total_views": "visto",
-      "downloaded": "descargado"
+      "downloaded": "descargado",
+      "tags": "etiquetas",
+      "share": "compartir"
     }
   },
   "others": {
