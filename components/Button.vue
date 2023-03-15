@@ -6,6 +6,7 @@ const props = withDefaults(
     size?: string;
     to?: string | object | undefined;
     href?: string | undefined;
+    icon?: string | undefined;
   }>(),
   {
     text: "",
@@ -13,6 +14,7 @@ const props = withDefaults(
     size: "md",
     to: undefined,
     href: undefined,
+    icon: undefined,
   }
 );
 
@@ -21,7 +23,7 @@ const defaultStyle = `
   cursor-pointer
   border transition-color duration-300
   focus:outline-none focus:ring-1 focus:ring-offset-1 focus:dark:ring-offset-gray-50 focus:dark:ring-gray-400 focus:ring-gray-600/[0.6] focus:ring-offset-gray-800/[0.6]
-  flex items-center justify-center font-semibold
+  flex items-center justify-center font-semibold gap-2 py-4
 `;
 const styles = reactive<{
   [key: string]: string;
@@ -67,7 +69,12 @@ const onClick = (event: MouseEvent) => {
     :to="to"
     :class="`${defaultStyle} ${selectedStyle} ${selectedSize}`"
   >
-    <slot>{{ text }}</slot>
+    <slot
+      ><Icon v-if="props.icon" :name="props.icon" size="2em" /><span
+        class="truncate"
+        >{{ text }}</span
+      ></slot
+    >
   </NuxtLink>
   <a
     v-else
@@ -75,6 +82,11 @@ const onClick = (event: MouseEvent) => {
     :href="href"
     @click="onClick"
   >
-    <slot>{{ text }}</slot>
+    <slot
+      ><Icon v-if="props.icon" :name="props.icon" size="2em" /><span
+        class="truncate"
+        >{{ text }}</span
+      ></slot
+    >
   </a>
 </template>

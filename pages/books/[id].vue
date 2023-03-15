@@ -148,10 +148,16 @@ const items = reactive([
           </div>
         </div>
         <!-- download options buttons  -->
-        <div class="grid grid-cols-2 gap-4 mt-4">
-          <Button text="Download PDF" size="md" class="uppercase" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <Button
+            icon="mdi:file-pdf"
+            text="Download PDF"
+            size="md"
+            class="uppercase"
+          />
           <!-- <Button text="Download Epub" type="secondary" size="md" class="uppercase" /> -->
           <Button
+            icon="ic:outline-menu-book"
             text="Read online"
             type="secondary"
             size="md"
