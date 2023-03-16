@@ -70,6 +70,14 @@ export function healthcheckServer(): Promise<HealthcheckResult> {
   return fetchLitterarumApi(`healthcheck`);
 }
 
+export function searchBooks(
+  query: string,
+  page = 1,
+  limit = 5
+): Promise<PageResult<Book>> {
+  return fetchLitterarumApi("search/books", { q: query, page, limit });
+}
+
 // /**
 //  * Get recommended
 //  */
@@ -130,9 +138,3 @@ export function healthcheckServer(): Promise<HealthcheckResult> {
 // }
 
 // /**
-//  * Search (searches movies, tv and people)
-//  */
-
-// export function searchShows(query: string, page = 1) {
-//   return fetchLitterarumApi('search/multi', { query, page })
-// }
