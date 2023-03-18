@@ -57,7 +57,7 @@ const aboutThisBook = reactive([
 
 const calculateReadTime = computed(() => {
   const time = book.data.readTime || 0;
-  const words = book.data.wordCount || 0;
+  const words = book.data.wordCount?.toLocaleString("en-US") || 0;
   const { hours, minutes } = msToTime(time);
   return `${hours} ${t("others.hours")} ${minutes} ${t(
     "others.minutes"
