@@ -46,12 +46,12 @@ const aboutThisBook = reactive([
   {
     name: "pages.book.total_views",
     icon: "mdi:eye",
-    value: "653",
+    value: book.data.views,
   },
   {
     name: "pages.book.downloaded",
     icon: "mdi:download",
-    value: "12",
+    value: book.data.downloaded,
   },
 ]);
 
