@@ -34,7 +34,7 @@ export interface PageResult<T> extends HttpApiResult {
 
 export interface Tag {
   _id: string;
-  name: string;
+  tag: string;
 }
 
 export interface Author {
@@ -54,6 +54,7 @@ export interface Book {
   wordCount?: number;
   pages?: number;
   downloaded: number;
+  views: number;
   author: Author;
   tags: Tag[];
 }

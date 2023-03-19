@@ -22,7 +22,7 @@ const setText = useDebounceFn(
 );
 </script>
 <template>
-  <form class="md:inline-block hidden">
+  <form class="md:inline-block hidden" action="/search" method="get">
     <div class="relative">
       <div
         class="absolute inset-y-0 left-0 flex items-center px-3 cursor-pointer"
@@ -32,6 +32,7 @@ const setText = useDebounceFn(
       <input
         list="book-search"
         type="search"
+        name="q"
         class="placeholder:truncate w-full pl-10 py-2 text-sm text-gray-900 caret-blue-500 accent-transparent border border-gray-300 rounded-md bg-gray-100"
         :class="[searchBarSizeStyles[props.size], $attrs.class]"
         :placeholder="$t('components.search_bar.placeholder')"

@@ -100,7 +100,7 @@ const items = reactive([
           height="600"
           format="webp"
           :src="book.data.coverUrl"
-          :alt="book.data.title || book.data.author.name"
+          :alt="book.data.title || book.data.author?.name"
           class="w-full h-full rounded-lg object-cover"
         />
         <div v-else class="h-full opacity-10 flex">
@@ -116,7 +116,13 @@ const items = reactive([
               book.data.subtitle
             }}</span>
           </h1>
-          <p class="uppercase">por {{ book.data.author.name }}</p>
+          <p class="uppercase font-light">
+            {{
+              book.data?.author?.name
+                ? `${$t("pages.book.by")} ${book.data.author.name}`
+                : $t("pages.book.unknown")
+            }}
+          </p>
           <StarsRate class="mb-4" :reviews="75" :rating="87" />
         </header>
         <p class="line-clamp-4">
@@ -168,17 +174,17 @@ const items = reactive([
       </div>
       <!-- About book, tags, and share options -->
       <div class="w-full flex flex-col lg:pl-24 space-y-8 divide-y">
-        <div class="flex flex-col space-y-2">
+        <div v-if="book.data.tags.length > 0" class="flex flex-col space-y-2">
           <h3 class="font-bold text-xl capitalize">
             {{ $t("pages.book.tags") }}
           </h3>
           <div class="flex flex-wrap gap-2">
             <div
-              v-for="(item, key) in ['test', 'tags', 'and', 'other', 'course']"
+              v-for="(item, key) in book.data.tags"
               :key="key"
               class="text-sm cursor-pointer border bg-slate-50 hover:bg-slate-100 px-2 py-1 rounded capitalize"
             >
-              <span>{{ item }}</span>
+              <span>{{ item.tag }}</span>
             </div>
           </div>
         </div>

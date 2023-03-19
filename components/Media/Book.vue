@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import type { Book, MediaType } from "~/types";
 
-defineProps<{
-  type: MediaType;
-  item: Book;
-}>();
+withDefaults(
+  defineProps<{
+    type?: MediaType;
+    item: Book;
+  }>(),
+  {
+    type: "books",
+  }
+);
 </script>
 
 <template>

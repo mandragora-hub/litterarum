@@ -7,7 +7,7 @@ export const QUERY_LIST = {
     { type: 'books', title: 'Popular Books', query: 'popular' },
     { type: 'books', title: 'Top Rated Books', query: 'top_rated' },
     { type: 'books', title: 'Upcoming Books', query: 'upcoming' },
-    { type: 'books', title: 'You may like', query: 'latest' },
+    { type: 'books', title: 'You may like', query: 'popular' },
   ],
   collection: <QueryItem[]>[
     { type: 'collections', title: 'Trending Books', query: 'trending' },

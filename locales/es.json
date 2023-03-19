@@ -22,8 +22,13 @@
     "demo": {
       "message": "El rápido zorro marrón salta sobre el perro perezoso."
     },
+    "search": {
+      "results_for": "resultados para"
+    },
     "book": {
       "pages": "paginas",
+      "by": "por",  
+      "unknown": "desconocido",
       "publication_date": "fecha de publicacion",
       "language": "idioma",
       "file": "archivo",

@@ -7,7 +7,7 @@ const AsyncWrapper = defineComponent(async (_, ctx) => {
   return () => ctx.slots?.default?.({ item });
 });
 
-const queries = $computed(() => [QUERY_LIST.book[0], QUERY_LIST.book[0]]);
+const queries = $computed(() => [QUERY_LIST.book[1], QUERY_LIST.book[2]]);
 </script>
 <template>
   <Container>
