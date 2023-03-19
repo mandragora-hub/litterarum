@@ -8,12 +8,6 @@ import type {
   HealthcheckResult,
 } from "../types";
 
-const apiBaseUrl = "http://localhost:3000";
-// const apiBaseUrl = 'https://litterarum.onrender.com'
-const API_VERSION = "api/v1";
-const ACCESS_TOKEN =
-  "2d2084688dd7c91302101d5e8887aca2e38b2ac9af499e03b5120499739bc7a80c3e37a1104383eb1d3368ad5370942c63b5994be28a6c36bb1f258512147fa0";
-
 const cache = new LRU({
   max: 500,
   ttl: 2000 * 60 * 60, // 2 hour
@@ -23,14 +17,15 @@ function _fetchLitterarumApi(
   url: string,
   params: Record<string, string | number | undefined> = {}
 ) {
+  const config = useRuntimeConfig();
   if (params.language == null) {
     const locale = useNuxtApp().$i18n.locale;
     params.language = unref(locale);
   }
   return $fetch(url, {
-    baseURL: `${apiBaseUrl}/${API_VERSION}`,
+    baseURL: `${config.public.apiBaseUrl}/${config.public.apiVersion}`,
     headers: {
-      Authorization: `Bearer ${ACCESS_TOKEN}`,
+      Authorization: `Bearer ${config.public.apiToken}`,
     },
     params,
   });

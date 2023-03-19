@@ -48,6 +48,7 @@ export interface Book {
   _id: string;
   title: string;
   subtitle?: string;
+  description?: string;
   basename: string;
   coverUrl?: string;
   readTime?: number; // ?note: time in milliseconds

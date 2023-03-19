@@ -1,5 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      apiToken: process.env.NUXT_PUBLIC_API_TOKEN,
+      apiBaseUrl:
+        process.env.NUXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
+      apiVersion: process.env.NUXT_PUBLIC_API_VERSION || "api/v1",
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3333/",
+    },
+  },
+
   typescript: {
     strict: true,
     typeCheck: true,
@@ -13,8 +23,13 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/image-edge",
     "nuxt-icon",
+    "nuxt-simple-sitemap",
   ],
 
+  sitemap: {
+    exclude: ["/demo", "/search"],
+  },
+  
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     layoutTransition: { name: "layout", mode: "out-in" },
