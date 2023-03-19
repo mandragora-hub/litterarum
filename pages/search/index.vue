@@ -2,6 +2,7 @@
 import type { Book } from "types";
 import { QUERY_LIST } from "~/constants/lists";
 
+const { t } = useI18n();
 const route = useRoute();
 const q = route.query.q as string;
 
@@ -23,15 +24,10 @@ const loadMore = async () => {
 
 const queries = $computed(() => [QUERY_LIST.book[0], QUERY_LIST.book[1]]);
 
-// useHead(() => ({
-//   title: capitalize(t('pages.post.title')),
-//   meta: [
-//     {
-//       name: 'description',
-//       content: t('pages.post.description'),
-//     },
-//   ],
-// }))
+useHead(() => ({
+  title: `${capitalize(t("pages.search.results_for"))} ${q}`,
+}));
+
 </script>
 <template>
   <Container>

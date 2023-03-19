@@ -2,16 +2,17 @@
 import { AppConfigInput } from "@nuxt/schema";
 const app = useAppConfig() as AppConfigInput;
 const { locale } = useLocale();
+const { t } = useI18n();
 
 useHead({
   title: app.name,
-  titleTemplate: "%s - Nuxt 3 Litterarum",
+  titleTemplate: `%s - ${t("pages.index.title_template")}`,
   meta: [
     { name: "viewport", content: "width=device-width, initial-scale=1" },
     {
       hid: "description",
       name: "description",
-      content: "Nuxt 3 Litterarum",
+      content: t("pages.index.header_description"),
     },
     {
       name: "theme-color",

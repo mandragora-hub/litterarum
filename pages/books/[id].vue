@@ -5,7 +5,6 @@ const route = useRoute();
 const bookId = route.params.id as string;
 
 const book = await getBook(bookId);
-// import { capitalize } from '~/utils/str'
 const { t } = useI18n();
 const queries = $computed(() => [QUERY_LIST.book[5]]);
 
@@ -64,15 +63,15 @@ const calculateReadTime = computed(() => {
   )} (${words} ${t("others.words")})`;
 });
 
-// useHead(() => ({
-//   title: capitalize(t('pages.post.title')),
-//   meta: [
-//     {
-//       name: 'description',
-//       content: t('pages.post.description'),
-//     },
-//   ],
-// }))
+useHead(() => ({
+  title: book.data.title,
+  meta: [
+    {
+      name: 'description',
+      content: book.data.description || '',
+    },
+  ],
+}))
 
 const items = reactive([
   {

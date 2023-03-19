@@ -19,6 +19,10 @@
     }
   },
   "pages": {
+    "index": {
+      "title_template": "Download free books in PDF and Epub",
+      "header_description": "Litterarum is a virtual library to share books in different formats for students and book lovers. Our goal is to publish free content that can enrich the training of those who want to read them. This project is a small contribution to all that immense world of information that circulates through the network."
+    },
     "demo": {
       "message": "The quick brown fox jumps over the lazy dog"
     },
@@ -27,7 +31,7 @@
     },
     "book": {
       "pages": "pages",
-      "by": "by",  
+      "by": "by",
       "unknown": "unknown",
       "publication_date": "publication date",
       "language": "language",

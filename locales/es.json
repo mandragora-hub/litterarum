@@ -19,6 +19,10 @@
     }
   },
   "pages": {
+    "index": {
+      "title_template": "Descarga libros gratis en PDF y EPUB",
+      "header_description": "Litterarum es una biblioteca virtual para compartir libros en diferentes formatos para los estudiantes y amantes de la lectura. Nuestro objetivo es publicar contenido gratuito que puedan enriquecer la formación de quienes quieran leerlos. Este proyecto es una pequeña contribución a todo ese inmenso mundo de información que circula por la red."
+    },
     "demo": {
       "message": "El rápido zorro marrón salta sobre el perro perezoso."
     },
@@ -27,7 +31,7 @@
     },
     "book": {
       "pages": "paginas",
-      "by": "por",  
+      "by": "por",
       "unknown": "desconocido",
       "publication_date": "fecha de publicacion",
       "language": "idioma",
