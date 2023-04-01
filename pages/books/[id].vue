@@ -8,6 +8,10 @@ const book = await getBook(bookId);
 const { t } = useI18n();
 const queries = $computed(() => [QUERY_LIST.book[5]]);
 
+const config = useRuntimeConfig();
+const downloadLink = (basename: string) =>
+  `${config.public.apiBaseUrl}/${config.public.apiVersion}/files/${basename}/download`;
+
 const highlight = reactive([
   {
     name: "pages.book.pages",
@@ -67,11 +71,11 @@ useHead(() => ({
   title: book.data.title,
   meta: [
     {
-      name: 'description',
-      content: book.data.description || '',
+      name: "description",
+      content: book.data.description || "",
     },
   ],
-}))
+}));
 
 const items = reactive([
   {
@@ -159,6 +163,7 @@ const items = reactive([
             text="Download PDF"
             size="md"
             class="uppercase"
+            :href="downloadLink(book.data.basename)"
           />
           <!-- <Button text="Download Epub" type="secondary" size="md" class="uppercase" /> -->
           <Button
