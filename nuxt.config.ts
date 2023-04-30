@@ -11,6 +11,11 @@ export default defineNuxtConfig({
     },
   },
 
+  routeRules: {
+    // Render these routes with SPA
+    '/books/reader/**': { ssr: false },
+  },
+
   typescript: {
     strict: true,
     typeCheck: true,
