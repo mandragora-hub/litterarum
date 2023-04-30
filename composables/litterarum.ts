@@ -6,6 +6,7 @@ import type {
   Result,
   Book,
   HealthcheckResult,
+  TypeFile,
 } from "../types";
 
 const cache = new LRU({
@@ -59,6 +60,10 @@ export function listMedia(
 
 export function getBook(id: string): Promise<Result<Book>> {
   return fetchLitterarumApi(`books/${id}`);
+}
+
+export function downloadBook(id: string, type: TypeFile = "pdf"): Promise<any> {
+  return fetchLitterarumApi(`books/${id}/download?type=${type}`);
 }
 
 export function healthcheckServer(): Promise<HealthcheckResult> {
@@ -133,3 +138,5 @@ export function searchBooks(
 // }
 
 // /**
+
+

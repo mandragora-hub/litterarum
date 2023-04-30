@@ -58,6 +58,8 @@ export interface Book {
   views: number;
   author: Author;
   tags: Tag[];
+  pdfFile?: string;
+  ePubFile?: string;
 }
 
-
+export type TypeFile = "pdf" | "epub";

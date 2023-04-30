@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { QUERY_LIST } from "~/constants/lists";
+import { TypeFile } from "~~/types";
 
 const route = useRoute();
 const bookId = route.params.id as string;
@@ -8,9 +9,18 @@ const book = await getBook(bookId);
 const { t } = useI18n();
 const queries = $computed(() => [QUERY_LIST.book[5]]);
 
-const config = useRuntimeConfig();
-const downloadLink = (basename: string) =>
-  `${config.public.apiBaseUrl}/${config.public.apiVersion}/files/${basename}/download`;
+const readerLink = $computed(() => `reader/${book.data.ePubFile}`)
+
+const downloadLink = (type: TypeFile = "pdf") => {
+  const bookId = book.data._id;
+  return `/download/${bookId}/${type}`;
+
+  // const result = await downloadBook(bookId, type);
+  // const blobURL = URL.createObjectURL(result);
+
+  // console.log(result)
+  // window.open(blobURL);
+};
 
 const highlight = reactive([
   {
@@ -159,19 +169,22 @@ const items = reactive([
         <!-- download options buttons  -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
           <Button
+            v-if="book.data.pdfFile"
             icon="mdi:file-pdf"
             text="Download PDF"
             size="md"
             class="uppercase"
-            :href="downloadLink(book.data.basename)"
+            :href="downloadLink('pdf')"
           />
           <!-- <Button text="Download Epub" type="secondary" size="md" class="uppercase" /> -->
           <Button
+            v-if="book.data.ePubFile"
             icon="ic:outline-menu-book"
             text="Read online"
             type="secondary"
             size="md"
             class="uppercase"
+            :href="readerLink"
           />
           <!-- <Button text="Send via e-mail" type="secondary" size="md" class="uppercase" /> -->
         </div>
