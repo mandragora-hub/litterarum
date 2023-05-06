@@ -35,7 +35,7 @@ const breakpoints = {
         class="opacity-50 hover:(opacity-50 text-primary) transition"
         :to="`/${query.type}/category/${query.query}`"
       >
-        {{ $t("Explore more") }}
+        {{ $t("components.carousel.explore_more") }}
       </NuxtLink>
     </template>
     <ClientOnly fallback-tag="span" fallback="Loading...">

@@ -89,7 +89,7 @@ useHead(() => ({
 
 const items = reactive([
   {
-    text: "books",
+    text: t("components.breadcrumbs.books"),
     href: "/books",
   },
   {

@@ -48,8 +48,11 @@ definePageMeta({
           </h1>
 
           <div class="flex flex-col space-y-2">
-            <p>Libro en espanol | tamano 8MB</p>
-            <p>Descargas 8</p>
+            <p>
+              {{ $t("pages.download.spanish_book") }} |
+              {{ $t("pages.download.size") }} 8MB
+            </p>
+            <p>{{ $t("pages.download.downloads", { amount: 8 }) }}</p>
             <a
               ref="link"
               class="text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-sm px-5 py-2.5 mx-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center font-bold"
@@ -59,11 +62,11 @@ definePageMeta({
                   name="svg-spinners:blocks-wave"
                   class="inline w-4 h-4 mr-2"
                 />
-                Preparing you download...
+                {{ $t("pages.download.preparing_you_download") }}
               </div>
               <div v-if="isReady">
                 <Icon name="mdi:download" class="inline w-4 h-4 mr-2" />
-                Download
+                {{ $t("pages.download.download") }}
               </div>
             </a>
           </div>
@@ -81,11 +84,13 @@ definePageMeta({
 
           <div class="bg-yellow-100 w-full py-4 border space-y-2">
             <p>
-              <span class="font-bold">¿Ha funcionado la descarga?</span> Puedes
-              apoyar este proyecto haciendo un donativo a través de PayPal.
-              Ayúdanos a alcanzar los objetivos para seguir en funcionamiento y
-              llegar a más usuarios.
-              <NuxtLink class="text-blue-500" to="/donate">Ver más</NuxtLink>
+              <span class="font-bold">{{
+                $t("pages.download.did_the_download_work")
+              }}</span>
+              {{ $t("pages.download.paypal_donation_message") }}
+              <NuxtLink class="text-blue-500" to="/donate">{{
+                $t("pages.download.see_more")
+              }}</NuxtLink>
             </p>
             <form
               action="https://www.paypal.com/donate"

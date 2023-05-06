@@ -22,6 +22,7 @@ import {
 // };
 
 const { locale, availableLocales } = useLocale();
+const { t } = useI18n();
 
 const props = defineProps({
   type: {
@@ -45,7 +46,7 @@ const currentStyle = toRef(props, "type");
       <ListboxLabel class="sr-only">Theme</ListboxLabel>
       <ListboxButton
         type="button"
-        title="Change Language"
+        :title="t('components.language_switcher.change_language')"
         class="transition-colors duration-300"
       >
         <span class="justify-center items-center flex">

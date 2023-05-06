@@ -13,7 +13,7 @@ const item = await listMedia(props.query.type, props.query.query, 1, 12);
     <template #title>
       <div class="flex flex-col">
         <span class="text-4xl font-bold text-gray-800 dark:text-gray-100"
-          >Recent books</span
+          >{{ $t("components.grid.recent_books") }}</span
         >
         <span class="mb-4 inline-block h-0.5 w-20 rounded bg-green-700"></span>
       </div>
@@ -25,7 +25,7 @@ const item = await listMedia(props.query.type, props.query.query, 1, 12);
           class="p-4"
           aria-label="all posts"
         >
-          {{ $t("See all") }}
+          {{ $t("components.grid.see_all") }}
           &rarr;
         </NuxtLink>
       </div>
