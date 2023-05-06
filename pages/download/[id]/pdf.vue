@@ -44,7 +44,7 @@ definePageMeta({
           class="flex flex-col items-center text-center space-y-6 bg-white border shadow-lg py-8 my-8 mx-auto"
         >
           <h1 class="text-xl font-bold text-blue-400">
-            {{ `${book.data.title} - ${book.data.author.name}` }}
+            {{ `${book.data.title} - ${book.data?.author?.name || $t("pages.book.unknown")}` }}
           </h1>
 
           <div class="flex flex-col space-y-2">
