@@ -7,7 +7,13 @@ export default defineNuxtConfig({
         process.env.NUXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
       apiVersion: process.env.NUXT_PUBLIC_API_VERSION || "api/v1",
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3333/",
+      recaptchaSiteKey: process.env.NUXT_RECAPTCHA_SITE_KEY,
     },
+  },
+
+  routeRules: {
+    // Render these routes with SPA
+    '/books/reader/**': { ssr: false },
   },
 
   typescript: {
@@ -29,7 +35,7 @@ export default defineNuxtConfig({
   sitemap: {
     exclude: ["/demo", "/search"],
   },
-  
+
   app: {
     pageTransition: { name: "page", mode: "out-in" },
     layoutTransition: { name: "layout", mode: "out-in" },

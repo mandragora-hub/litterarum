@@ -3,6 +3,22 @@
   "language": "Idioma",
   "welcome": "Bienvenido",
   "components": {
+    "carousel": {
+      "latest_books": "Últimos Libros",
+      "trending_books": "Libros de tendencias",
+      "popular_books": "Libros Populares",
+      "top_rated_books": "Libros Mejor Calificados",
+      "upcoming_books": "Próximos Libros",
+      "you_may_like": "Te puede gustar",
+      "explore_more": "Explorar más"
+    },
+    "grid": {
+      "recent_books": "Libros recientes",
+      "see_all": "Ver todo"
+    },
+    "breadcrumbs": {
+      "books": "Libros"
+    },
     "search_bar": {
       "placeholder": "Buscar por título, autor o palabra clave..."
     },
@@ -14,7 +30,7 @@
       "theme": "tema"
     },
     "hero": {
-      "header": "descargar libros electrónicos gratuitos",
+      "header": "Descargar libros electrónicos gratuitos",
       "subtitle": "Redescubre los clásicos con libros de dominio público"
     }
   },
@@ -43,6 +59,16 @@
       "downloaded": "descargado",
       "tags": "etiquetas",
       "share": "compartir"
+    },
+    "download": {
+      "download": "Descargar",
+      "downloads": "{amount} Descargas",
+      "preparing_you_download": "Preparando tu descarga...",
+      "spanish_book": "Libro en español",
+      "size": "Tamaño",
+      "did_the_download_work": "¿Ha funcionado la descarga?",
+      "paypal_donation_message": " Puedes apoyar este proyecto haciendo un donativo a través de PayPal. Ayúdanos a alcanzar los objetivos para seguir en funcionamiento y llegar a más usuarios.",
+      "see_more": "Ver mas"
     }
   },
   "others": {

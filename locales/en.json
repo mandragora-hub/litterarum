@@ -3,6 +3,22 @@
   "language": "language",
   "welcome": "welcome",
   "components": {
+    "carousel": {
+      "latest_books": "Latest Books",
+      "trending_books": "Trending Books",
+      "popular_books": "Popular Books",
+      "top_rated_books": "Top Rated Books",
+      "upcoming_books": "Upcoming Books",
+      "you_may_like": "You may like",
+      "explore_more": "Explore More"
+    },
+    "grid": {
+      "recent_books": "Recent books",
+      "see_all": "See All"
+    },
+    "breadcrumbs": {
+      "books": "Books"
+    },
     "search_bar": {
       "placeholder": "Search by title, author or keyword..."
     },
@@ -14,7 +30,7 @@
       "theme": "theme"
     },
     "hero": {
-      "header": "download free ebooks",
+      "header": "Download free ebooks",
       "subtitle": "Rediscover the classics with public domain books"
     }
   },
@@ -43,6 +59,16 @@
       "downloaded": "downloaded",
       "tags": "tags",
       "share": "share"
+    },
+    "download": {
+      "download": "download",
+      "downloads": "{amount} Downloads",
+      "preparing_you_download": "Preparing you download...",
+      "spanish_book": "Spanish book",
+      "size": "Size",
+      "did_the_download_work": "Did the download work?",
+      "paypal_donation_message": "You can support this project by making a donation through PayPal. Help us achieve our goals to stay up and running and reach more users.",
+      "see_more": "See More"
     }
   },
   "others": {
