@@ -7,7 +7,8 @@ defineProps<{
 
 <template>
   <div class="flex items-center" :class="$attrs.class">
-    <Icon name="ph:star-fill" class="text-yellow-500" />
+    <Icon v-if="rating" name="ph:star-fill" class="text-yellow-500" />
+    <Icon v-else name="ph:star" class="text-yellow-500" />
     <p class="ml-2 font-bold dark:text-white">
       {{ rating || 0 }}
     </p>
