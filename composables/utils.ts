@@ -39,3 +39,28 @@ export function formatTime(minutes: number) {
 export function numberWithCommas(number: number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+export async function getBookRatingByTitle(
+  bookName: string
+): Promise<{ rating?: number; reviews?: any[] } | undefined> {
+  try {
+    const res = (await $fetch(
+      `https://openlibrary.org/search.json?title=${encodeURIComponent(
+        bookName
+      )}`
+    )) as any;
+    const firstBook = res.docs[0];
+    const bookRating = firstBook?.ratings_average;
+
+    const bookISBN = firstBook.isbn[0];
+    const data = (await $fetch(
+      `https://openlibrary.org/isbn/${bookISBN}.json`
+    )) as any;
+    const bookReviews = data.details?.reviews;
+
+    return { rating: bookRating, reviews: bookReviews };
+  } catch (error) {
+    console.error(error);
+    return undefined;
+  }
+}

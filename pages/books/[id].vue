@@ -9,7 +9,7 @@ const book = await getBook(bookId);
 const { t } = useI18n();
 const queries = $computed(() => [QUERY_LIST.book[5]]);
 
-const readerLink = $computed(() => `reader/${book.data.ePubFile}`)
+const readerLink = $computed(() => `reader/${book.data.ePubFile}`);
 
 const downloadLink = (type: TypeFile = "pdf") => {
   const bookId = book.data._id;
@@ -21,6 +21,8 @@ const downloadLink = (type: TypeFile = "pdf") => {
   // console.log(result)
   // window.open(blobURL);
 };
+
+const bookRating = await getBookRatingByTitle(book.data.title);
 
 const highlight = reactive([
   {
@@ -136,7 +138,11 @@ const items = reactive([
                 : $t("pages.book.unknown")
             }}
           </p>
-          <StarsRate class="mb-4" :reviews="75" :rating="87" />
+          <StarsRate
+            class="mb-4"
+            :reviews="bookRating?.reviews?.length"
+            :rating="bookRating?.rating"
+          />
         </header>
         <p class="line-clamp-4">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe,
@@ -199,7 +205,7 @@ const items = reactive([
             <div
               v-for="(item, key) in book.data.tags"
               :key="key"
-              class="text-sm cursor-pointer border bg-slate-50 hover:bg-slate-100 px-2 py-1 rounded capitalize"
+              class="text-sm cursor-pointer border bg-slate-50 hover:bg-slate-100 px-2 py-1 rounded capitalize text-black"
             >
               <span>{{ item.tag }}</span>
             </div>
