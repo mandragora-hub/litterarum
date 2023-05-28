@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { parseMarkdown } from "~/utils/parseMarkdown";
 import { QUERY_LIST } from "~/constants/lists";
 import { TypeFile } from "~~/types";
 
@@ -21,6 +22,11 @@ const downloadLink = (type: TypeFile = "pdf") => {
   // console.log(result)
   // window.open(blobURL);
 };
+
+const bookDescription = ref<null | string>();
+bookDescription.value = await parseMarkdown(
+  book.data.description ? book.data.description : ""
+);
 
 const bookRating = await getBookRatingByTitle(book.data.title);
 
@@ -144,7 +150,12 @@ const items = reactive([
             :rating="bookRating?.rating"
           />
         </header>
-        <p class="line-clamp-4">
+        <ContentRendererMarkdown
+          v-if="bookDescription"
+          :value="bookDescription"
+        />
+
+        <!-- <p class="line-clamp-4">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe,
           temporibus, harum impedit fugit magni provident dignissimos rem
           perferendis porro facere eius, autem magnam tenetur sed consequatur!
@@ -152,7 +163,7 @@ const items = reactive([
           provident dignissimos rem perferendis porro facere eius, autem magnam
           tenetur sed consequatur! Omnis molestias ullam aliquid! Lorem ipsum,
           dolor sit amet consectetur adipisicing elit. Saepe,
-        </p>
+        </p> -->
         <!-- tags and reading time  -->
         <div class="flex items-center justify-end my-2">
           <Icon name="ph:clock-light" class="mr-2" />
