@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { parseMarkdown } from "~/utils/parseMarkdown";
 import { QUERY_LIST } from "~/constants/lists";
-import { TypeFile } from "~~/types";
+import { TypeFile } from "~/types";
 
 const route = useRoute();
 const bookId = route.params.id as string;
@@ -152,18 +152,9 @@ const items = reactive([
         </header>
         <ContentRendererMarkdown
           v-if="bookDescription"
+          class="line-clamp-8"
           :value="bookDescription"
         />
-
-        <!-- <p class="line-clamp-4">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe,
-          temporibus, harum impedit fugit magni provident dignissimos rem
-          perferendis porro facere eius, autem magnam tenetur sed consequatur!
-          Omnis molestias ullam aliquid! temporibus, harum impedit fugit magni
-          provident dignissimos rem perferendis porro facere eius, autem magnam
-          tenetur sed consequatur! Omnis molestias ullam aliquid! Lorem ipsum,
-          dolor sit amet consectetur adipisicing elit. Saepe,
-        </p> -->
         <!-- tags and reading time  -->
         <div class="flex items-center justify-end my-2">
           <Icon name="ph:clock-light" class="mr-2" />
