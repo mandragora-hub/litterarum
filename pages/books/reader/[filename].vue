@@ -105,17 +105,17 @@ book.loaded.navigation.then(function (toc) {
 book.loaded.metadata.then(function (meta) {
   const title = document.getElementById("title");
   const author = document.getElementById("author");
-  const cover = document.getElementById("cover");
+  // const cover = document.getElementById("cover") as HTMLImageElement;
 
   title!.textContent = meta.title;
   author!.textContent = meta.creator;
-  if (book.archive) {
-    book.archive.createUrl(book.cover).then(function (url) {
-      cover.src = url;
-    });
-  } else {
-    cover.src = book.cover;
-  }
+  // if (book.archive) {
+  //   book.archive.createUrl(book.loaded.cover, {base64: false}).then(function (url) {
+  //     cover.src = url;
+  //   });
+  // } else {
+  //   cover.src = book.loaded.cover;
+  // }
 });
 
 // const params =
@@ -163,7 +163,7 @@ definePageMeta({
   <div id="content">
     <div id="navigation">
       <h1 id="title">...</h1>
-      <image id="cover" width="150px" />
+      <img id="cover" width="150px" />
       <h2 id="author">...</h2>
       <div id="toc"></div>
     </div>

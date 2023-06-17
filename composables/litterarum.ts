@@ -1,4 +1,4 @@
-import LRU from "lru-cache";
+import { LRUCache } from "lru-cache";
 import { hash as ohash } from "ohash";
 import type {
   MediaType,
@@ -9,7 +9,7 @@ import type {
   TypeFile,
 } from "../types";
 
-const cache = new LRU({
+const cache = new LRUCache({
   max: 500,
   ttl: 2000 * 60 * 60, // 2 hour
 });
@@ -138,5 +138,3 @@ export function searchBooks(
 // }
 
 // /**
-
-

@@ -23,7 +23,7 @@ const downloadLink = (type: TypeFile = "pdf") => {
   // window.open(blobURL);
 };
 
-const bookDescription = ref<null | string>();
+const bookDescription = ref<null | Record<string, any>>();
 bookDescription.value = await parseMarkdown(
   book.data.description ? book.data.description : ""
 );
