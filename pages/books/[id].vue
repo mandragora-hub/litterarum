@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { parseMarkdown } from "~/utils/parseMarkdown";
 import { QUERY_LIST } from "~/constants/lists";
-import { TypeFile } from "~/types";
+
+const config = useRuntimeConfig();
 
 const route = useRoute();
 const bookId = route.params.id as string;
@@ -12,15 +13,9 @@ const queries = $computed(() => [QUERY_LIST.book[5]]);
 
 const readerLink = $computed(() => `reader/${book.data.ePubFile}`);
 
-const downloadLink = (type: TypeFile = "pdf") => {
-  const bookId = book.data._id;
-  return `/download/${bookId}/${type}`;
-
-  // const result = await downloadBook(bookId, type);
-  // const blobURL = URL.createObjectURL(result);
-
-  // console.log(result)
-  // window.open(blobURL);
+const downloadLink = (pdfFile: string) => {
+  const baseURL = `${config.public.apiBaseUrl}/${config.public.apiVersion}`;
+  return `${baseURL}/files/${pdfFile}`;
 };
 
 const bookDescription = ref<null | Record<string, any>>();
@@ -182,7 +177,7 @@ const items = reactive([
             text="Download PDF"
             size="md"
             class="uppercase"
-            :href="downloadLink('pdf')"
+            :href="downloadLink(book.data.pdfFile)"
           />
           <!-- <Button text="Download Epub" type="secondary" size="md" class="uppercase" /> -->
           <Button
