@@ -5,7 +5,7 @@ const props = withDefaults(defineProps<{ size: SearchBarSize }>(), {
 });
 
 const result = ref();
-const setText = useDebounceFn(
+const searchMatch = useDebounceFn(
   async (event: Event) => {
     const el = event.target as HTMLInputElement;
     const text = el.value;
@@ -25,12 +25,12 @@ const setText = useDebounceFn(
         :size="props.size"
         name="q"
         icon="i-heroicons-magnifying-glass-20-solid"
-        :trailing="false" 
+        :trailing="false"
         :placeholder="$t('components.search_bar.placeholder')"
-        @input="(event) => setText(event)"
-        />
-        <!-- :class="[searchBarSizeStyles[props.size], $attrs.class]" -->
-        <!-- class="placeholder:truncate w-full pl-10 py-2 text-sm text-gray-900 caret-blue-500 accent-transparent border border-gray-300 rounded-md bg-gray-100" -->
+        @input="searchMatch"
+      />
+      <!-- :class="[searchBarSizeStyles[props.size], $attrs.class]" -->
+      <!-- class="placeholder:truncate w-full pl-10 py-2 text-sm text-gray-900 caret-blue-500 accent-transparent border border-gray-300 rounded-md bg-gray-100" -->
       <datalist id="book-search">
         <option
           v-for="(item, index) of result?.data"
