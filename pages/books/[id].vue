@@ -1,0 +1,247 @@
+<script setup lang="ts">
+import { parseMarkdown } from "~/utils/parseMarkdown";
+import { QUERY_LIST } from "~/constants/lists";
+
+const config = useRuntimeConfig();
+
+const route = useRoute();
+const bookId = route.params.id as string;
+
+const book = await getBook(bookId);
+const { t } = useI18n();
+const queries = $computed(() => [QUERY_LIST.book[5]]);
+
+const readerLink = $computed(() => `reader/${book.data.ePubFile}`);
+
+const downloadLink = (pdfFile: string) => {
+  const baseURL = `${config.public.apiBaseUrl}/${config.public.apiVersion}`;
+  return `${baseURL}/files/${pdfFile}`;
+};
+
+const bookDescription = ref<null | Record<string, any>>();
+bookDescription.value = await parseMarkdown(
+  book.data.description ? book.data.description : ""
+);
+
+const bookRating = await getBookRatingByTitle(book.data.title);
+
+const highlight = reactive([
+  {
+    name: "pages.book.pages",
+    icon: "i-mdi-book-open-page-variant-outline",
+    value: book.data.pages || 123,
+  },
+  {
+    name: "pages.book.publication_date",
+    icon: "i-mdi-calendar-multiselect-outline",
+    value: "value",
+  },
+  {
+    name: "pages.book.language",
+    icon: "i-mdi-translate",
+    value: "español",
+  },
+  {
+    name: "pages.book.file",
+    icon: "i-mdi-file",
+    value: "PDF / Epub",
+  },
+  {
+    name: "pages.book.isbn",
+    icon: "i-mdi-id-card",
+    value: "81273871-821",
+  },
+]);
+
+const aboutThisBook = reactive([
+  {
+    name: "pages.book.date_added",
+    icon: "i-mdi-calendar-blank",
+    value: "10-23-32",
+  },
+  {
+    name: "pages.book.total_views",
+    icon: "i-mdi-eye",
+    value: book.data.views,
+  },
+  {
+    name: "pages.book.downloaded",
+    icon: "i-mdi-download",
+    value: book.data.downloaded,
+  },
+]);
+
+const calculateReadTime = computed(() => {
+  const time = book.data.readTime || 0;
+  const words = book.data.wordCount?.toLocaleString("en-US") || 0;
+  const { hours, minutes } = msToTime(time);
+  return `${hours} ${t("others.hours")} ${minutes} ${t(
+    "others.minutes"
+  )} (${words} ${t("others.words")})`;
+});
+
+useHead(() => ({
+  title: book.data.title,
+  meta: [
+    {
+      name: "description",
+      content: book.data.description || "",
+    },
+  ],
+}));
+
+const items = reactive([
+  {
+    text: t("components.breadcrumbs.books"),
+    href: "/books",
+  },
+  {
+    text: book.data.title || "",
+    href: "#",
+  },
+]);
+</script>
+<template>
+  <Container>
+    <Breadcrumbs :items="items" class="-mt-4 mb-6" />
+    <!-- book overview -->
+    <div class="flex flex-col lg:flex-row border-b pb-8 space-y-4">
+      <!-- image o book cover -->
+      <div
+        class="h-96 w-full mr-10 rounded-lg bg-gray-400 aspect-[10/16] transition duration-400 hover:scale-105 hover:z-10"
+      >
+        <NuxtImg
+          v-if="book.data.coverUrl"
+          width="400"
+          height="600"
+          format="webp"
+          :src="book.data.coverUrl"
+          :alt="book.data.title || book.data.author?.name"
+          class="w-full h-full rounded-lg object-cover"
+        />
+        <div v-else class="h-full opacity-10 flex">
+          <UIcon name="i-mdi-rabbit" class="m-auto text-4xl" />
+        </div>
+      </div>
+      <!-- information -->
+      <div class="flex flex-col">
+        <header class="border-b mb-4">
+          <h1 class="text-3xl font-bold capitalize">
+            {{ book.data.title }}
+            <span v-if="book.data.subtitle" class="text-lg font-light">{{
+              book.data.subtitle
+            }}</span>
+          </h1>
+          <p class="uppercase font-light">
+            {{
+              book.data?.author?.name
+                ? `${$t("pages.book.by")} ${book.data.author.name}`
+                : $t("pages.book.unknown")
+            }}
+          </p>
+          <StarsRate
+            class="mb-4"
+            :reviews="bookRating?.reviews?.length"
+            :rating="bookRating?.rating"
+          />
+        </header>
+        <ContentRendererMarkdown
+          v-if="bookDescription"
+          class="line-clamp-8"
+          :value="bookDescription"
+        />
+        <!-- tags and reading time  -->
+        <div class="flex items-center justify-end my-2">
+          <UIcon name="i-ph-clock-light" class="mr-2" />
+          <p class="text-gray-600">{{ calculateReadTime }}</p>
+        </div>
+        <!-- highlight section -->
+        <div class="flex flex-row flex-nowrap justify-between overflow-x-auto">
+          <div
+            v-for="i of highlight"
+            :key="i.name"
+            class="grid place-items-center text-sm p-4 gap-2"
+          >
+            <div class="font-light text-center capitalize text-slate-500">
+              {{ $t(i.name) }}
+            </div>
+            <UIcon :name="i.icon" class="text-lg" />
+            <span class="whitespace-nowrap capitalize">{{ i.value }}</span>
+          </div>
+        </div>
+        <!-- download options buttons  -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
+          <UButton
+            v-if="book.data.pdfFile"
+            icon="i-mdi-file-pdf"
+            label="Download PDF"
+            size="xl"
+            :to="downloadLink(book.data.pdfFile)"
+          />
+          <!-- <Button text="Download Epub" type="secondary" size="xl" class="uppercase" /> -->
+          <UButton
+            v-if="book.data.ePubFile"
+            icon="i-ph-book-open-text"
+            label="Read online"
+            color="gray"
+            variant="solid"
+            size="xl"
+            :to="readerLink"
+          />
+          <!-- <Button text="Send via e-mail" type="secondary" size="md" class="uppercase" /> -->
+        </div>
+      </div>
+      <!-- About book, tags, and share options -->
+      <div class="w-full flex flex-col lg:pl-24 space-y-8 divide-y">
+        <div v-if="book.data.tags.length > 0" class="flex flex-col space-y-2">
+          <h3 class="font-bold text-xl capitalize">
+            {{ $t("pages.book.tags") }}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <div
+              v-for="(item, key) in book.data.tags"
+              :key="key"
+              class="text-sm cursor-pointer border bg-slate-50 hover:bg-slate-100 px-2 py-1 rounded capitalize text-black"
+            >
+              <span>{{ item.tag }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-col space-y-2 pt-8 first:pt-0">
+          <h3 class="font-bold text-xl capitalize">
+            {{ $t("pages.book.share") }}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            <UButton icon="i-mdi-facebook" color="blue" square />
+            <UButton icon="i-mdi-twitter" color="sky" square />
+            <UButton icon="i-mdi-whatsapp" color="emerald" square />
+            <UButton icon="i-mdi-plus" color="black" square variant="ghost" />
+          </div>
+        </div>
+        <div class="flex flex-col space-y-2 pt-8">
+          <h3 class="font-bold text-xl capitalize">
+            {{ $t("pages.book.about_this_book") }}
+          </h3>
+          <ol class="text-gray-600 flex flex-col space-y-2">
+            <li
+              v-for="item of aboutThisBook"
+              :key="item.name"
+              class="flex flex-row space-x-1 items-center"
+            >
+              <UIcon :name="item.icon" class="text-xl" />
+              <p class="text-md capitalize">
+                {{ $t(item.name) }}: {{ item.value }}
+              </p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!-- <Newsletter /> -->
+    <CarouselAutoQuery
+      v-for="query of queries"
+      :key="query.type + query.query"
+      :query="query"
+    />
+  </Container>
+</template>

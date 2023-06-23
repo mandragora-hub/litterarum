@@ -3,8 +3,24 @@
   "language": "language",
   "welcome": "welcome",
   "components": {
+    "carousel": {
+      "latest_books": "Latest Books",
+      "trending_books": "Trending Books",
+      "popular_books": "Popular Books",
+      "top_rated_books": "Top Rated Books",
+      "upcoming_books": "Upcoming Books",
+      "you_may_like": "You may like",
+      "explore_more": "Explore More"
+    },
+    "grid": {
+      "recent_books": "Recent books",
+      "see_all": "See All"
+    },
+    "breadcrumbs": {
+      "books": "Books"
+    },
     "search_bar": {
-      "placeholder": "Search..."
+      "placeholder": "Search by title, author or keyword..."
     },
     "language_switcher": {
       "change_language": "change language"
@@ -12,11 +28,52 @@
     "theme_switcher": {
       "change_theme": "change theme",
       "theme": "theme"
+    },
+    "hero": {
+      "header": "Download free ebooks",
+      "subtitle": "Rediscover the classics with public domain books"
     }
   },
   "pages": {
+    "index": {
+      "title_template": "Download free books in PDF and Epub",
+      "header_description": "Litterarum is a virtual library to share books in different formats for students and book lovers. Our goal is to publish free content that can enrich the training of those who want to read them. This project is a small contribution to all that immense world of information that circulates through the network."
+    },
     "demo": {
       "message": "The quick brown fox jumps over the lazy dog"
+    },
+    "search": {
+      "results_for": "results for"
+    },
+    "book": {
+      "pages": "pages",
+      "by": "by",
+      "unknown": "unknown",
+      "publication_date": "publication date",
+      "language": "language",
+      "file": "file",
+      "isbn": "isbn",
+      "about_this_book": "about this book",
+      "date_added": "date added",
+      "total_views": "total views",
+      "downloaded": "downloaded",
+      "tags": "tags",
+      "share": "share"
+    },
+    "download": {
+      "download": "download",
+      "downloads": "{amount} Downloads",
+      "preparing_you_download": "Preparing you download...",
+      "spanish_book": "Spanish book",
+      "size": "Size",
+      "did_the_download_work": "Did the download work?",
+      "paypal_donation_message": "You can support this project by making a donation through PayPal. Help us achieve our goals to stay up and running and reach more users.",
+      "see_more": "See More"
     }
+  },
+  "others": {
+    "hours": "hour",
+    "minutes": "minutes",
+    "words": "words"
   }
 }

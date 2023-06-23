@@ -1,12 +1,19 @@
 <template>
   <NavbarBase>
     <template #menu>
-      <div class="relative hidden lg:flex items-center ml-auto">
-        <div class="flex items-center justify-center">
-          <SearchBar />
-        </div>
+      <div
+        class="divide-x space-x-4 relative hidden lg:flex items-center ml-auto"
+      >
+        <Transition>
+          <div
+            v-if="isSearchBarOnNavbar"
+            class="flex items-center justify-center"
+          >
+            <SearchBar size="xs" />
+          </div>
+        </Transition>
         <div
-          class="flex space-x-4 border-l ml-6 pl-6 border-gray-900/10 dark:border-gray-50/[0.2]"
+          class="flex space-x-4 pl-4 border-gray-900/10 dark:border-gray-50/[0.2]"
         >
           <LanguageSwitcher />
           <ThemeSwitcher />
@@ -15,7 +22,7 @@
             href="https://github.com/mandragora-hub/litterarum"
             title="Github"
           >
-            <Icon name="mdi:github-face" />
+            <UIcon name="i-mdi-github-face" />
           </Anchor>
         </div>
       </div>
@@ -37,18 +44,15 @@
             <LanguageSwitcher type="select-box" />
           </div>
         </ActionSheetBody>
-        <Button
-          type="secondary"
-          title="Github"
-          href="https://github.com/mandragora-hub/litterarum"
-        >
-          <Icon name="mdi-github-face" />
+        <UButton
+          icon="i-mdi-github-face"
+          variant="link"
+          to="https://github.com/mandragora-hub/litterarum"
+          target="_blank"
+        />
 
-          <span class="ml-1">Github</span>
-        </Button>
-        <Button
+        <UButton
           text="Close"
-          type="secondary"
           @click.prevent="toggleOptions(false)"
         />
       </ActionSheet>
@@ -58,3 +62,15 @@
     </template>
   </NavbarBase>
 </template>
+
+<style scoped>
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>

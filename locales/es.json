@@ -3,8 +3,24 @@
   "language": "Idioma",
   "welcome": "Bienvenido",
   "components": {
+    "carousel": {
+      "latest_books": "Últimos Libros",
+      "trending_books": "Libros de tendencias",
+      "popular_books": "Libros Populares",
+      "top_rated_books": "Libros Mejor Calificados",
+      "upcoming_books": "Próximos Libros",
+      "you_may_like": "Te puede gustar",
+      "explore_more": "Explorar más"
+    },
+    "grid": {
+      "recent_books": "Libros recientes",
+      "see_all": "Ver todo"
+    },
+    "breadcrumbs": {
+      "books": "Libros"
+    },
     "search_bar": {
-      "placeholder": "Buscar..."
+      "placeholder": "Buscar por título, autor o palabra clave..."
     },
     "language_switcher": {
       "change_language": "cambiar idioma"
@@ -12,11 +28,52 @@
     "theme_switcher": {
       "change_theme": "cambiar tema",
       "theme": "tema"
+    },
+    "hero": {
+      "header": "Descargar libros electrónicos gratuitos",
+      "subtitle": "Redescubre los clásicos con libros de dominio público"
     }
   },
   "pages": {
+    "index": {
+      "title_template": "Descarga libros gratis en PDF y EPUB",
+      "header_description": "Litterarum es una biblioteca virtual para compartir libros en diferentes formatos para los estudiantes y amantes de la lectura. Nuestro objetivo es publicar contenido gratuito que puedan enriquecer la formación de quienes quieran leerlos. Este proyecto es una pequeña contribución a todo ese inmenso mundo de información que circula por la red."
+    },
     "demo": {
       "message": "El rápido zorro marrón salta sobre el perro perezoso."
+    },
+    "search": {
+      "results_for": "resultados para"
+    },
+    "book": {
+      "pages": "paginas",
+      "by": "por",
+      "unknown": "desconocido",
+      "publication_date": "fecha de publicacion",
+      "language": "idioma",
+      "file": "archivo",
+      "isbn": "isbn",
+      "about_this_book": "acerca de este libro",
+      "date_added": "fecha agregado",
+      "total_views": "visto",
+      "downloaded": "descargado",
+      "tags": "etiquetas",
+      "share": "compartir"
+    },
+    "download": {
+      "download": "Descargar",
+      "downloads": "{amount} Descargas",
+      "preparing_you_download": "Preparando tu descarga...",
+      "spanish_book": "Libro en español",
+      "size": "Tamaño",
+      "did_the_download_work": "¿Ha funcionado la descarga?",
+      "paypal_donation_message": " Puedes apoyar este proyecto haciendo un donativo a través de PayPal. Ayúdanos a alcanzar los objetivos para seguir en funcionamiento y llegar a más usuarios.",
+      "see_more": "Ver mas"
     }
+  },
+  "others": {
+    "hours": "horas",
+    "minutes": "minutos",
+    "words": "palabras"
   }
 }

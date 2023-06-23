@@ -1,5 +1,21 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      apiToken: process.env.NUXT_PUBLIC_API_TOKEN,
+      apiBaseUrl:
+        process.env.NUXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
+      apiVersion: process.env.NUXT_PUBLIC_API_VERSION || "api/v1",
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3333/",
+      recaptchaSiteKey: process.env.NUXT_RECAPTCHA_SITE_KEY,
+    },
+  },
+
+  routeRules: {
+    // Render these routes with SPA
+    "/books/reader/**": { ssr: false },
+  },
+
   typescript: {
     strict: true,
     typeCheck: true,
@@ -7,13 +23,25 @@ export default defineNuxtConfig({
 
   modules: [
     "@vueuse/nuxt",
-    "@nuxtjs/tailwindcss",
+    "@nuxthq/ui",
     "@nuxtjs/i18n",
     "@pinia/nuxt",
     "@nuxt/content",
     "@nuxt/image-edge",
-    "nuxt-icon",
+    "nuxt-simple-sitemap",
   ],
+
+  ui: {
+    icons: ["mdi", "ph"],
+  },
+
+  // colorMode: {
+  //   preference: 'light'
+  // }
+
+  sitemap: {
+    exclude: ["/demo", "/search"],
+  },
 
   app: {
     pageTransition: { name: "page", mode: "out-in" },
@@ -37,6 +65,6 @@ export default defineNuxtConfig({
     ],
     // lazy: true,
     langDir: "locales",
-    defaultLocale: "en",
+    defaultLocale: "es",
   },
 });

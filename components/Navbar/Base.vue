@@ -1,8 +1,4 @@
 <script lang="ts" setup>
-import { AppConfigInput } from "@nuxt/schema";
-
-// state
-const app = useAppConfig() as AppConfigInput;
 const navbar = ref(null);
 const showDrawer = useState<boolean>("navbar.showDrawer", () => false);
 const showOptions = useState<boolean>("navbar.showOptions", () => false);
@@ -72,27 +68,14 @@ const toggleOptions = (show?: boolean) => {
               class="flex items-center text-gray-600 dark:text-gray-300 text-lg"
               aria-hidden="true"
             >
-              <Icon v-if="!showDrawer" name="uil-bars" />
-              <Icon v-else name="uil-times" />
+              <UIcon v-if="!showDrawer" name="i-mdi-menu" />
+              <UIcon v-else name="i-mdi-close" />
             </span>
           </button>
         </div>
         <!-- title -->
         <slot name="title">
-          <NuxtLink
-            tag="a"
-            class="mr-3 flex-none overflow-hidden md:w-auto text-md font-bold text-gray-900 dark:text-gray-200"
-            to="/"
-          >
-            <span class="sr-only">home</span>
-            <span class="flex items-center">
-              <Icon
-                name="simple-icons:nuxtdotjs"
-                class="inline-block mr-2 text-lg text-primary-500"
-              />
-              {{ app.name }}
-            </span>
-          </NuxtLink>
+          <Logo />
         </slot>
         <slot name="menu" />
         <!-- options:toggle -->
@@ -106,7 +89,7 @@ const toggleOptions = (show?: boolean) => {
               class="flex items-center text-gray-600 dark:text-gray-300 text-sm"
               aria-hidden="true"
             >
-              <Icon name="fa-solid:ellipsis-v" />
+              <UIcon name="i-mdi-dots-vertical" class="text-xl"/>
             </span>
           </button>
         </div>
