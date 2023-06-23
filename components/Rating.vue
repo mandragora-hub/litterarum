@@ -32,8 +32,8 @@ const rate = (newRate: number) => {
         class="transition duration-400 hover:scale-125"
         @click="rate(item)"
       >
-        <Icon v-if="item <= props.value" size="15px" name="ph:star-fill" />
-        <Icon v-else size="15px" name="ph:star" />
+        <UIcon v-if="item <= props.value" size="15px" name="i-ph:star-fill" />
+        <UIcon v-else size="15px" name="i-ph:star" />
       </li>
     </ul>
     <span v-if="hasCounter" class="mt-1"

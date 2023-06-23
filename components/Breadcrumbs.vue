@@ -15,7 +15,7 @@ defineProps<{
         class="flex cursor-pointer items-center font-sans text-sm font-normal leading-normal text-blue-gray-900 antialiased transition-colors duration- 300 hover:text-blue-500"
       >
         <NuxtLink class="opacity-60" to="/">
-          <Icon name="mdi:home" size="1.3em" />
+          <UIcon name="i-mdi-home" class="text-xl" />
         </NuxtLink>
         <span
           class="pointer-events-none mx-2 select-none font-sans text-sm font-normal leading-normal text-blue-gray-500 antialiased"

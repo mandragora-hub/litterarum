@@ -4,12 +4,6 @@ const props = withDefaults(defineProps<{ size: SearchBarSize }>(), {
   size: "xs",
 });
 
-const searchBarSizeStyles = reactive({
-  xs: "pr-30",
-  md: "pr-56",
-  lg: "pr-96",
-});
-
 const result = ref();
 const setText = useDebounceFn(
   async (event: Event) => {
@@ -24,21 +18,19 @@ const setText = useDebounceFn(
 <template>
   <form class="md:inline-block hidden" action="/search" method="get">
     <div class="relative">
-      <div
-        class="absolute inset-y-0 left-0 flex items-center px-3 cursor-pointer"
-      >
-        <Icon name="ic:outline-search" />
-      </div>
-      <input
+      <UInput
         list="book-search"
         type="search"
+        color="gray"
+        :size="props.size"
         name="q"
-        class="placeholder:truncate w-full pl-10 py-2 text-sm text-gray-900 caret-blue-500 accent-transparent border border-gray-300 rounded-md bg-gray-100"
-        :class="[searchBarSizeStyles[props.size], $attrs.class]"
+        icon="i-heroicons-magnifying-glass-20-solid"
+        :trailing="false" 
         :placeholder="$t('components.search_bar.placeholder')"
-        required
         @input="(event) => setText(event)"
-      />
+        />
+        <!-- :class="[searchBarSizeStyles[props.size], $attrs.class]" -->
+        <!-- class="placeholder:truncate w-full pl-10 py-2 text-sm text-gray-900 caret-blue-500 accent-transparent border border-gray-300 rounded-md bg-gray-100" -->
       <datalist id="book-search">
         <option
           v-for="(item, index) of result?.data"

@@ -22,7 +22,7 @@
             href="https://github.com/mandragora-hub/litterarum"
             title="Github"
           >
-            <Icon name="mdi:github-face" />
+            <UIcon name="i-mdi-github-face" />
           </Anchor>
         </div>
       </div>
@@ -44,18 +44,15 @@
             <LanguageSwitcher type="select-box" />
           </div>
         </ActionSheetBody>
-        <Button
-          type="secondary"
-          title="Github"
-          href="https://github.com/mandragora-hub/litterarum"
-        >
-          <Icon name="mdi-github-face" />
+        <UButton
+          icon="i-mdi-github-face"
+          variant="link"
+          to="https://github.com/mandragora-hub/litterarum"
+          target="_blank"
+        />
 
-          <span class="ml-1">Github</span>
-        </Button>
-        <Button
+        <UButton
           text="Close"
-          type="secondary"
           @click.prevent="toggleOptions(false)"
         />
       </ActionSheet>

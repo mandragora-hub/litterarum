@@ -27,7 +27,7 @@ withDefaults(
         class="w-full h-full rounded-lg object-cover bg-[url('https://singlecolorimage.com/get/888a85/100x100')]"
       />
       <div v-else class="animate-pulse h-full opacity-10 flex">
-        <Icon name="mdi-rabbit" class="m-auto text-4xl" />
+        <UIcon name="i-mdi-rabbit" class="m-auto text-4xl" />
       </div>
     </div>
     <div class="text-left mt-2">

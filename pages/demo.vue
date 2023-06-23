@@ -81,12 +81,12 @@ const setHeadlessuiToggleTest = (e: boolean) => (headlessuiToggleTest = e);
         </form>
       </div>
       <div class="border p-4 my-2">
-        <h2 class="text-lg font-bold">Testing icon (nuxt-icon)</h2>
+        <h2 class="text-lg font-bold">Testing icon (nuxthq-ui)</h2>
         <div class="flex gap-2 mt-2">
-          <Icon name="uil:github" size="24px" />
-          <Icon name="🚀" size="24px" />
-          <Icon name="nuxt" size="24px" />
-          <Icon name="twemoji:pineapple" size="24px"></Icon>
+          <UIcon name="i-heroicons-light-bulb" class="text-2xl" />
+          <UIcon name="i-mdi-github" class="text-2xl" />
+          <UIcon name="i-mdi-airplane" class="text-2xl" />
+          <UIcon name="i-heroicons-finger-print" class="text-2xl" />
         </div>
       </div>
       <div class="border p-4 my-2">

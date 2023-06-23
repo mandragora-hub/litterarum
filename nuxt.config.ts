@@ -13,7 +13,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     // Render these routes with SPA
-    '/books/reader/**': { ssr: false },
+    "/books/reader/**": { ssr: false },
   },
 
   typescript: {
@@ -23,14 +23,21 @@ export default defineNuxtConfig({
 
   modules: [
     "@vueuse/nuxt",
-    "@nuxtjs/tailwindcss",
+    "@nuxthq/ui",
     "@nuxtjs/i18n",
     "@pinia/nuxt",
     "@nuxt/content",
     "@nuxt/image-edge",
-    "nuxt-icon",
     "nuxt-simple-sitemap",
   ],
+
+  ui: {
+    icons: ["mdi", "ph"],
+  },
+
+  // colorMode: {
+  //   preference: 'light'
+  // }
 
   sitemap: {
     exclude: ["/demo", "/search"],

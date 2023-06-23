@@ -58,14 +58,14 @@ definePageMeta({
               class="text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-sm px-5 py-2.5 mx-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center font-bold"
             >
               <div v-if="isLoading">
-                <Icon
-                  name="svg-spinners:blocks-wave"
+                <UIcon
+                  name="i-mdi-loading"
                   class="inline w-4 h-4 mr-2"
                 />
                 {{ $t("pages.download.preparing_you_download") }}
               </div>
               <div v-if="isReady">
-                <Icon name="mdi:download" class="inline w-4 h-4 mr-2" />
+                <UIcon name="i-mdi-download" class="inline w-4 h-4 mr-2" />
                 {{ $t("pages.download.download") }}
               </div>
             </a>

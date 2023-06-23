@@ -10,7 +10,7 @@ const app = useAppConfig() as AppConfigInput;
       <NuxtLink to="/demo">
         <div class="flex items-center gap-x-2 mb-1">
           {{ app.name }}
-          <Icon name="ph:egg-crack-duotone" />
+          <UIcon name="i-ph-egg-crack-duotone" class="text-xl" />
         </div>
       </NuxtLink>
       <div class="text-xs text-gray-600 dark:text-gray-400">

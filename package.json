@@ -8,11 +8,13 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.1.52",
+    "@iconify-json/ph": "^1.1.5",
     "@nuxt/content": "^2.7.0",
     "@nuxt/image-edge": "^1.0.0-rc.1-28112642.b1c2038",
+    "@nuxthq/ui": "^2.4.1",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/i18n": "^8.0.0-beta.9",
-    "@nuxtjs/tailwindcss": "^6.7.2",
     "@types/node": "^20.3.1",
     "@vueuse/core": "^10.1.2",
     "@vueuse/nuxt": "^10.1.2",
@@ -21,7 +23,6 @@
     "eslint-plugin-nuxt": "^4.0.0",
     "lru-cache": "^9.1.2",
     "nuxt": "^3.5.3",
-    "nuxt-icon": "^0.4.1",
     "nuxt-simple-sitemap": "^2.6.2",
     "ohash": "^1.1.2",
     "typescript": "^5.1.3",

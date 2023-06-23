@@ -11,9 +11,9 @@ const app = useAppConfig();
   >
     <span class="sr-only">home</span>
     <span class="flex items-center">
-      <Icon
-        name="simple-icons:nuxtdotjs"
-        class="inline-block mr-2 text-lg text-primary-500"
+      <UIcon
+        name="i-ph-anchor"
+        class="inline-block mr-2 text-lg"
       />
       {{ app.name }}
     </span>

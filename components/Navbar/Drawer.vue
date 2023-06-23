@@ -22,7 +22,7 @@ onMounted(() => {
                 i !== 1,
             }"
           >
-            <Icon name="uil-apps" class="text-xs" />
+            <UIcon name="i-mdi-apps" class="text-xs" />
           </div>
           <span
             class="text-sm font-semibold capitalize"

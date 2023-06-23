@@ -50,7 +50,7 @@ const currentStyle = toRef(props, "type");
         class="transition-colors duration-300"
       >
         <span class="justify-center items-center flex">
-          <Icon name="la:language" />
+          <UIcon name="i-ph-translate" />
         </span>
       </ListboxButton>
       <ListboxOptions

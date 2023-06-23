@@ -53,9 +53,9 @@ useHead(() => ({
         class="flex flex-col items-center text-center mx-auto my-10 gap-4 text-gray-500"
       >
         <div class="flex items-center space-x-2">
-          <Icon name="carbon:bot" size="3em" />
-          <Icon name="ph:heart-thin" size="2em" />
-          <Icon name="simple-icons:buymeacoffee" size="3em" />
+          <!-- <UIcon name="carbon:bot" size="3em" /> -->
+          <UIcon name="i-ph-heart-thin" class="text-xl" />
+          <!-- <UIcon name="simple-icons:buymeacoffee" size="3em" /> -->
         </div>
 
         <p class="text-3xl">Not found match</p>

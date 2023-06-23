@@ -28,27 +28,27 @@ const bookRating = await getBookRatingByTitle(book.data.title);
 const highlight = reactive([
   {
     name: "pages.book.pages",
-    icon: "mdi:book-open-page-variant-outline",
+    icon: "i-mdi-book-open-page-variant-outline",
     value: book.data.pages || 123,
   },
   {
     name: "pages.book.publication_date",
-    icon: "mdi:calendar-multiselect-outline",
+    icon: "i-mdi-calendar-multiselect-outline",
     value: "value",
   },
   {
     name: "pages.book.language",
-    icon: "mdi:translate",
+    icon: "i-mdi-translate",
     value: "español",
   },
   {
     name: "pages.book.file",
-    icon: "mdi:file",
+    icon: "i-mdi-file",
     value: "PDF / Epub",
   },
   {
     name: "pages.book.isbn",
-    icon: "mdi:id-card",
+    icon: "i-mdi-id-card",
     value: "81273871-821",
   },
 ]);
@@ -56,17 +56,17 @@ const highlight = reactive([
 const aboutThisBook = reactive([
   {
     name: "pages.book.date_added",
-    icon: "mdi:calendar-blank",
+    icon: "i-mdi-calendar-blank",
     value: "10-23-32",
   },
   {
     name: "pages.book.total_views",
-    icon: "mdi:eye",
+    icon: "i-mdi-eye",
     value: book.data.views,
   },
   {
     name: "pages.book.downloaded",
-    icon: "mdi:download",
+    icon: "i-mdi-download",
     value: book.data.downloaded,
   },
 ]);
@@ -120,7 +120,7 @@ const items = reactive([
           class="w-full h-full rounded-lg object-cover"
         />
         <div v-else class="h-full opacity-10 flex">
-          <Icon name="mdi:rabbit" class="m-auto text-4xl" />
+          <UIcon name="i-mdi-rabbit" class="m-auto text-4xl" />
         </div>
       </div>
       <!-- information -->
@@ -152,7 +152,7 @@ const items = reactive([
         />
         <!-- tags and reading time  -->
         <div class="flex items-center justify-end my-2">
-          <Icon name="ph:clock-light" class="mr-2" />
+          <UIcon name="i-ph-clock-light" class="mr-2" />
           <p class="text-gray-600">{{ calculateReadTime }}</p>
         </div>
         <!-- highlight section -->
@@ -165,29 +165,28 @@ const items = reactive([
             <div class="font-light text-center capitalize text-slate-500">
               {{ $t(i.name) }}
             </div>
-            <Icon :name="i.icon" />
+            <UIcon :name="i.icon" class="text-lg" />
             <span class="whitespace-nowrap capitalize">{{ i.value }}</span>
           </div>
         </div>
         <!-- download options buttons  -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-          <Button
+          <UButton
             v-if="book.data.pdfFile"
-            icon="mdi:file-pdf"
-            text="Download PDF"
-            size="md"
-            class="uppercase"
-            :href="downloadLink(book.data.pdfFile)"
+            icon="i-mdi-file-pdf"
+            label="Download PDF"
+            size="xl"
+            :to="downloadLink(book.data.pdfFile)"
           />
-          <!-- <Button text="Download Epub" type="secondary" size="md" class="uppercase" /> -->
-          <Button
+          <!-- <Button text="Download Epub" type="secondary" size="xl" class="uppercase" /> -->
+          <UButton
             v-if="book.data.ePubFile"
-            icon="ic:outline-menu-book"
-            text="Read online"
-            type="secondary"
-            size="md"
-            class="uppercase"
-            :href="readerLink"
+            icon="i-ph-book-open-text"
+            label="Read online"
+            color="gray"
+            variant="solid"
+            size="xl"
+            :to="readerLink"
           />
           <!-- <Button text="Send via e-mail" type="secondary" size="md" class="uppercase" /> -->
         </div>
@@ -213,30 +212,10 @@ const items = reactive([
             {{ $t("pages.book.share") }}
           </h3>
           <div class="flex flex-wrap gap-2">
-            <button
-              type="button"
-              class="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 rounded p-2 text-center dark:focus:ring-[#3b5998]/55"
-            >
-              <Icon name="mdi:facebook" size="1.5em" />
-            </button>
-            <button
-              type="button"
-              class="text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 rounded p-2 text-center dark:focus:ring-[#1da1f2]/55"
-            >
-              <Icon name="mdi:twitter" size="1.5em" />
-            </button>
-            <button
-              type="button"
-              class="text-white bg-[#128C7E] hover:bg-[#128C7E]/90 focus:ring-4 focus:outline-none focus:ring-[#128C7E]/50 rounded p-2 text-center dark:focus:ring-[#128C7E]/55"
-            >
-              <Icon name="mdi:whatsapp" size="1.5em" />
-            </button>
-            <button
-              type="button"
-              class="text-gray-400 border-black border border-dashed rounded p-2 text-center"
-            >
-              <Icon name="mdi:plus" size="1.5em" />
-            </button>
+            <UButton icon="i-mdi-facebook" color="blue" square />
+            <UButton icon="i-mdi-twitter" color="sky" square />
+            <UButton icon="i-mdi-whatsapp" color="emerald" square />
+            <UButton icon="i-mdi-plus" color="black" square variant="ghost" />
           </div>
         </div>
         <div class="flex flex-col space-y-2 pt-8">
@@ -249,7 +228,7 @@ const items = reactive([
               :key="item.name"
               class="flex flex-row space-x-1 items-center"
             >
-              <Icon :name="item.icon" size="1em" />
+              <UIcon :name="item.icon" class="text-xl" />
               <p class="text-md capitalize">
                 {{ $t(item.name) }}: {{ item.value }}
               </p>

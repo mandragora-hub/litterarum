@@ -68,8 +68,8 @@ const toggleOptions = (show?: boolean) => {
               class="flex items-center text-gray-600 dark:text-gray-300 text-lg"
               aria-hidden="true"
             >
-              <Icon v-if="!showDrawer" name="uil-bars" />
-              <Icon v-else name="uil-times" />
+              <UIcon v-if="!showDrawer" name="i-mdi-menu" />
+              <UIcon v-else name="i-mdi-close" />
             </span>
           </button>
         </div>
@@ -89,7 +89,7 @@ const toggleOptions = (show?: boolean) => {
               class="flex items-center text-gray-600 dark:text-gray-300 text-sm"
               aria-hidden="true"
             >
-              <Icon name="fa-solid:ellipsis-v" />
+              <UIcon name="i-mdi-dots-vertical" class="text-xl"/>
             </span>
           </button>
         </div>

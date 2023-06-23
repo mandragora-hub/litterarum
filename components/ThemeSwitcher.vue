@@ -7,10 +7,10 @@
       @click="toggleDark()"
     >
       <span v-if="isDark" class="flex justify-center items-center">
-        <Icon name="uil:moon" />
+        <UIcon name="i-ph-moon" />
       </span>
       <span v-if="!isDark" class="flex justify-center items-center">
-        <Icon name="uil:sun" />
+        <UIcon name="i-ph-sun" />
       </span>
     </button>
   </div>
