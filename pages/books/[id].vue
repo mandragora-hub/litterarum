@@ -176,6 +176,7 @@ const items = reactive([
             icon="i-mdi-file-pdf"
             label="Download PDF"
             size="xl"
+            target="_blank"
             :to="downloadLink(book.data.pdfFile)"
           />
           <!-- <Button text="Download Epub" type="secondary" size="xl" class="uppercase" /> -->
@@ -186,6 +187,7 @@ const items = reactive([
             color="gray"
             variant="solid"
             size="xl"
+            target="_blank"
             :to="readerLink"
           />
           <!-- <Button text="Send via e-mail" type="secondary" size="md" class="uppercase" /> -->
