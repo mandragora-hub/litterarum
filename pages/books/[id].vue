@@ -224,7 +224,7 @@ const items = reactive([
           <h3 class="font-bold text-xl capitalize">
             {{ $t("pages.book.about_this_book") }}
           </h3>
-          <ol class="text-gray-600 flex flex-col space-y-2">
+          <ol class="text-gray-600 dark:text-gray-400 flex flex-col space-y-2">
             <li
               v-for="item of aboutThisBook"
               :key="item.name"
