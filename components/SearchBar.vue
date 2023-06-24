@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { nextTick } from "vue";
 type SearchBarSize = "lg" | "md" | "xs";
 const props = withDefaults(defineProps<{ size: SearchBarSize }>(), {
   size: "xs",
 });
+
+const input = ref();
 
 const result = ref();
 const searchMatch = useDebounceFn(
@@ -14,11 +17,18 @@ const searchMatch = useDebounceFn(
   1000,
   { maxWait: 5000 }
 );
+
+defineShortcuts({
+  meta_k: () => {
+    nextTick(() => input?.value?.$refs?.input?.focus());
+  },
+});
 </script>
 <template>
   <form class="md:inline-block hidden" action="/search" method="get">
     <div class="relative">
       <UInput
+        ref="input"
         list="book-search"
         type="search"
         color="gray"
