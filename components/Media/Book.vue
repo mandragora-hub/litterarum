@@ -10,6 +10,17 @@ withDefaults(
     type: "books",
   }
 );
+
+const cleanUrl = (url: string) => {
+  // doing this we avoid the mixed content error in modern browsers
+  const urlObj = new URL(url);
+
+  if (urlObj.protocol === "http:") {
+    urlObj.protocol = "https:";
+  }
+
+  return urlObj.toString();
+};
 </script>
 
 <template>
@@ -22,7 +33,7 @@ withDefaults(
         width="400"
         height="600"
         format="webp"
-        :src="item.coverUrl"
+        :src="cleanUrl(item.coverUrl)"
         :alt="item.title || item.author.name"
         class="w-full h-full rounded-lg object-cover bg-[url('https://singlecolorimage.com/get/888a85/100x100')]"
       />
