@@ -60,6 +60,10 @@ export interface Book {
   tags: Tag[];
   pdfFile?: string;
   ePubFile?: string;
+  publicationDate?: string; // 431-213 BC, 1982
+  isbn?: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export type TypeFile = "pdf" | "epub";

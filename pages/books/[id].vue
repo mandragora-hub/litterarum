@@ -23,19 +23,38 @@ bookDescription.value = await parseMarkdown(
   book.data.description ? book.data.description : ""
 );
 
+const formatDate = (date: Date) => {
+  const parse = new Date(date);
+  const intl = new Intl.DateTimeFormat("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(parse);
+  return intl.toString();
+};
+
 const bookRating = await getBookRatingByTitle(book.data.title);
 
 const highlight = reactive([
-  {
-    name: "pages.book.pages",
-    icon: "i-mdi-book-open-page-variant-outline",
-    value: book.data.pages || 123,
-  },
-  {
-    name: "pages.book.publication_date",
-    icon: "i-mdi-calendar-multiselect-outline",
-    value: "value",
-  },
+  ...(book.data.pages
+    ? [
+        {
+          name: "pages.book.pages",
+          icon: "i-mdi-book-open-page-variant-outline",
+          value: book.data.pages,
+        },
+      ]
+    : []),
+  ...(book.data.publicationDate
+    ? [
+        {
+          name: "pages.book.publication_date",
+          icon: "i-mdi-calendar-multiselect-outline",
+          value: book.data.publicationDate,
+        },
+      ]
+    : []),
   {
     name: "pages.book.language",
     icon: "i-mdi-translate",
@@ -46,19 +65,27 @@ const highlight = reactive([
     icon: "i-mdi-file",
     value: "PDF / Epub",
   },
-  {
-    name: "pages.book.isbn",
-    icon: "i-mdi-id-card",
-    value: "81273871-821",
-  },
+  ...(book.data.isbn
+    ? [
+        {
+          name: "pages.book.isbn",
+          icon: "i-mdi-id-card",
+          value: book.data.isbn,
+        },
+      ]
+    : []),
 ]);
 
 const aboutThisBook = reactive([
-  {
-    name: "pages.book.date_added",
-    icon: "i-mdi-calendar-blank",
-    value: "10-23-32",
-  },
+  ...(book.data.createdAt
+    ? [
+        {
+          name: "pages.book.date_added",
+          icon: "i-mdi-calendar-blank",
+          value: formatDate(book.data.createdAt),
+        },
+      ]
+    : []),
   {
     name: "pages.book.total_views",
     icon: "i-mdi-eye",
@@ -124,7 +151,7 @@ const items = reactive([
         </div>
       </div>
       <!-- information -->
-      <div class="flex flex-col">
+      <div class="flex flex-col grow">
         <header class="border-b mb-4">
           <h1 class="text-3xl font-bold capitalize">
             {{ book.data.title }}
