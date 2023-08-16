@@ -4,9 +4,6 @@ function basicFetch(url: string) {
   return $fetch(url, {
     baseURL: `${config.public.apiBaseUrl}/${config.public.apiVersion}`,
     pick: ["basename", "updatedAt"],
-    headers: {
-      Authorization: `Bearer ${config.public.apiToken}`,
-    },
   });
 }
 

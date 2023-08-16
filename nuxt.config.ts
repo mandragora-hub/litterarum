@@ -2,7 +2,6 @@
 export default defineNuxtConfig({
   runtimeConfig: {
     public: {
-      apiToken: process.env.NUXT_PUBLIC_API_TOKEN,
       apiBaseUrl:
         process.env.NUXT_PUBLIC_API_BASE_URL || "http://localhost:3000",
       apiVersion: process.env.NUXT_PUBLIC_API_VERSION || "api/v1",

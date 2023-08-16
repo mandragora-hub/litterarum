@@ -25,9 +25,9 @@ function _fetchLitterarumApi(
   }
   return $fetch(url, {
     baseURL: `${config.public.apiBaseUrl}/${config.public.apiVersion}`,
-    headers: {
-      Authorization: `Bearer ${config.public.apiToken}`,
-    },
+    // headers: {
+    //   Authorization: `Bearer ${config.public.apiToken}`,
+    // },
     params,
   });
 }
