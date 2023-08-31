@@ -27,8 +27,13 @@ export default defineNuxtConfig({
     "@pinia/nuxt",
     "@nuxt/content",
     "@nuxt/image-edge",
+    "@nuxtjs/plausible",
     "nuxt-simple-sitemap",
   ],
+
+  plausible: {
+    apiHost: "https://plausible.redania.sbs/",
+  },
 
   ui: {
     icons: ["mdi", "ph"],
