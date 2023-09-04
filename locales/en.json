@@ -45,6 +45,10 @@
     "search": {
       "results_for": "results for"
     },
+    "bookIndex": {
+      "header": "All books",
+      "subtitle": "Enjoy our digital collection of universal literature 📚️."
+    },
     "book": {
       "pages": "pages",
       "by": "by",
