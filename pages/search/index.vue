@@ -11,14 +11,14 @@ useInfiniteScroll(el, () => loadMore());
 
 const books = ref<Book[] | undefined>();
 const pages = ref(1);
-const initialData = await searchBooks(q, pages.value, 12);
+const initialData = await searchBooks(q, pages.value, 10);
 books.value = initialData.data;
 
 const loadMore = async () => {
-  if (initialData.meta.totalPages < pages.value) return;
+  if (initialData.meta.totalPages <= pages.value) return;
 
   pages.value++;
-  const result = await searchBooks(q, pages.value, 12);
+  const result = await searchBooks(q, pages.value, 10);
   books.value?.push(...result.data);
 };
 
@@ -44,7 +44,7 @@ useHead(() => ({
       <div
         v-if="initialData.meta.count"
         ref="el"
-        class="grid grid-cols-2 gap-8 md:grid-cols-4 xl:grid-cols-6"
+        class="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-5"
       >
         <MediaBook v-for="i in books" :key="i._id" :item="i" />
       </div>
