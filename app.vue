@@ -1,12 +1,10 @@
 <script lang="ts" setup>
-import { AppConfigInput } from "@nuxt/schema";
-const app = useAppConfig() as AppConfigInput;
+const app = useAppConfig();
 const { locale } = useLocale();
 const { t } = useI18n();
 
 useHead({
   title: app.name,
-  titleTemplate: `%s - ${t("pages.index.title_template")}`,
   meta: [
     { name: "viewport", content: "width=device-width, initial-scale=1" },
     {

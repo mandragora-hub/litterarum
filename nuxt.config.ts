@@ -28,6 +28,7 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxt/image-edge",
     "@nuxtjs/plausible",
+    "nuxt-og-image",
     "nuxt-simple-sitemap",
   ],
 

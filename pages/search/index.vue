@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Book } from "types";
+import type { Book } from "~/types";
 import { QUERY_LIST } from "~/constants/lists";
 
-const { t } = useI18n();
+const app = useAppConfig();
 const route = useRoute();
 const q = route.query.q as string;
 
@@ -24,9 +24,16 @@ const loadMore = async () => {
 
 const queries = $computed(() => [QUERY_LIST.book[0], QUERY_LIST.book[1]]);
 
-useHead(() => ({
-  title: `${capitalize(t("pages.search.results_for"))} ${q}`,
-}));
+useSeoMeta({
+  title: `Resultado de ${q} - ${app.name}`,
+  ogTitle: `Resultado de ${q} - ${app.name}`,
+  description: app.description,
+  ogDescription: app.description,
+  ogImage: "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
+  twitterDescription: app.description,
+  twitterTitle: `Resultado de ${q} - ${app.name}`,
+  twitterImage: "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
+});
 
 </script>
 <template>

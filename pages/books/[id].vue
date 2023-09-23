@@ -3,6 +3,7 @@ import { parseMarkdown } from "~/utils/parseMarkdown";
 import { QUERY_LIST } from "~/constants/lists";
 
 const config = useRuntimeConfig();
+const app = useAppConfig();
 
 const route = useRoute();
 const bookId = route.params.id as string;
@@ -107,15 +108,16 @@ const calculateReadTime = computed(() => {
   )} (${words} ${t("others.words")})`;
 });
 
-useHead(() => ({
-  title: book.data.title,
-  meta: [
-    {
-      name: "description",
-      content: book.data.description || "",
-    },
-  ],
-}));
+useSeoMeta({
+  title: `${book.data.title} - ${app.name}`,
+  ogTitle: `${book.data.title} - ${app.name}`,
+  description: book.data.description,
+  ogDescription: book.data.description,
+  ogImage: book.data.coverUrl,
+  twitterDescription: book.data.description,
+  twitterTitle: `${book.data.title} - ${app.name}`,
+  twitterImage: book.data.coverUrl,
+});
 
 const items = reactive([
   {

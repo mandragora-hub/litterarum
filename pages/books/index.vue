@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import type { Book } from "types";
+import type { Book } from "~/types";
 
 const { t } = useI18n();
+const app = useAppConfig();
 
 const el = ref<HTMLElement | null>(null);
 useInfiniteScroll(el, () => loadMore());
@@ -18,6 +19,19 @@ const loadMore = async () => {
   const result = await searchBooks("", pages.value, 5);
   books.value?.push(...result.data);
 };
+
+useSeoMeta({
+  title: `Listado de libros 📚️ - ${app.name}`,
+  ogTitle: `Listado de libros 📚️ - ${app.name}`,
+  description: app.description,
+  ogDescription: app.description,
+  ogImage: "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
+  twitterDescription: app.description,
+  twitterTitle: `Listado de libros 📚️ - ${app.name}`,
+  twitterImage: "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
+});
+
+
 </script>
 <template>
   <Container>

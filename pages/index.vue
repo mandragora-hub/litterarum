@@ -8,6 +8,19 @@ const AsyncWrapper = defineComponent(async (_, ctx) => {
 });
 
 const queries = $computed(() => [QUERY_LIST.book[1], QUERY_LIST.book[2]]);
+
+const app = useAppConfig();
+
+useSeoMeta({
+  title: `${app.name} - ${app.tagline}`,
+  ogTitle: `${app.name} - ${app.tagline}`,
+  description: app.description,
+  ogDescription: app.description,
+  twitterDescription: app.description,
+  twitterTitle: `${app.name} - ${app.tagline}`,
+});
+
+defineOgImageScreenshot()
 </script>
 <template>
   <Container>
