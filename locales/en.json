@@ -62,7 +62,11 @@
       "total_views": "total views",
       "downloaded": "downloaded",
       "tags": "tags",
-      "share": "share"
+      "share": "share",
+      "options": {
+        "download_pdf": "Download PDF",
+        "read_online": "Read online"
+      }
     },
     "download": {
       "download": "download",

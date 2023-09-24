@@ -62,7 +62,11 @@
       "total_views": "visto",
       "downloaded": "descargado",
       "tags": "etiquetas",
-      "share": "compartir"
+      "share": "compartir",
+      "options": {
+        "download_pdf": "Descargar en PDF",
+        "read_online": "Leer en línea"
+      }
     },
     "download": {
       "download": "Descargar",

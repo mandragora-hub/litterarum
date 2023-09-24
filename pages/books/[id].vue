@@ -134,23 +134,48 @@ const items = reactive([
   <Container>
     <Breadcrumbs :items="items" class="-mt-4 mb-6" />
     <!-- book overview -->
-    <div class="flex flex-col lg:flex-row border-b pb-8 space-y-4">
-      <!-- image o book cover -->
-      <div
-        class="h-96 w-full mr-10 rounded-lg bg-gray-400 aspect-[10/16] transition duration-400 hover:scale-105 hover:z-10"
-      >
-        <NuxtImg
-          v-if="book.data.coverUrl"
-          width="400"
-          height="600"
-          format="webp"
-          :src="book.data.coverUrl"
-          :alt="book.data.title || book.data.author?.name"
-          class="w-full h-full rounded-lg object-cover"
-        />
-        <div v-else class="h-full opacity-10 flex">
-          <UIcon name="i-mdi-rabbit" class="m-auto text-4xl" />
+    <div class="flex flex-col lg:flex-row border-b pb-8 space-y-4 lg:space-x-8">
+      <!-- image, book cover and download buttons  -->
+      <div class="flex flex-col space-y-4">
+        <div
+          class="h-96 w-full rounded-lg bg-gray-400 aspect-[10/16] transition duration-400 hover:scale-105 hover:z-10"
+        >
+          <NuxtImg
+            v-if="book.data.coverUrl"
+            width="400"
+            height="600"
+            format="webp"
+            :src="book.data.coverUrl"
+            :alt="book.data.title || book.data.author?.name"
+            class="w-full h-full rounded-lg object-cover"
+          />
+          <div v-else class="h-full opacity-10 flex">
+            <UIcon name="i-mdi-rabbit" class="m-auto text-4xl" />
+          </div>
         </div>
+        <!-- download options buttons  -->
+        <UButton
+          v-if="book.data.pdfFile"
+          icon="i-mdi-file-pdf"
+          :label="$t('pages.book.options.download_pdf')"
+          block
+          size="xl"
+          target="_blank"
+          :to="downloadLink(book.data.pdfFile)"
+        />
+        <!-- <Button text="Download Epub" type="secondary" size="xl" class="uppercase" /> -->
+        <UButton
+          v-if="book.data.ePubFile"
+          icon="i-ph-book-open-text"
+          :label="$t('pages.book.options.read_online')"
+          color="gray"
+          variant="solid"
+          block
+          size="xl"
+          target="_blank"
+          :to="readerLink"
+        />
+        <!-- <Button text="Send via e-mail" type="secondary" size="md" class="uppercase" /> -->
       </div>
       <!-- information -->
       <div class="flex flex-col grow">
@@ -197,29 +222,6 @@ const items = reactive([
             <UIcon :name="i.icon" class="text-lg" />
             <span class="whitespace-nowrap capitalize">{{ i.value }}</span>
           </div>
-        </div>
-        <!-- download options buttons  -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-          <UButton
-            v-if="book.data.pdfFile"
-            icon="i-mdi-file-pdf"
-            label="Download PDF"
-            size="xl"
-            target="_blank"
-            :to="downloadLink(book.data.pdfFile)"
-          />
-          <!-- <Button text="Download Epub" type="secondary" size="xl" class="uppercase" /> -->
-          <UButton
-            v-if="book.data.ePubFile"
-            icon="i-ph-book-open-text"
-            label="Read online"
-            color="gray"
-            variant="solid"
-            size="xl"
-            target="_blank"
-            :to="readerLink"
-          />
-          <!-- <Button text="Send via e-mail" type="secondary" size="md" class="uppercase" /> -->
         </div>
       </div>
       <!-- About book, tags, and share options -->
