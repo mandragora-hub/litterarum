@@ -7,7 +7,7 @@ const props = defineProps<{
 const bookRating = await getBookRatingByTitle(props.book?.title);
 
 const bookPostedDate = computed(() => {
-  const parse = new Date(props.book?.createdAt);
+  const parse = new Date(props.book.createdAt || Date.now());
   const intl = new Intl.DateTimeFormat("es-US", {
     month: "long",
     day: "numeric",
@@ -42,10 +42,7 @@ const bookPostedDate = computed(() => {
       class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"
     ></span>
 
-    <NuxtLink
-      to="#disqus_thread"
-      class="font-normal text-blue-400 dark:text-white"
-    >
+    <NuxtLink to="#disqus_thread" class="font-normal text-blue-400">
       <DisqusCount :identifier="`/book/${book._id}`"
     /></NuxtLink>
   </div>
