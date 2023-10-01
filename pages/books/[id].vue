@@ -35,8 +35,6 @@ const formatDate = (date: Date) => {
   return intl.toString();
 };
 
-const bookRating = await getBookRatingByTitle(book.data.title);
-
 const highlight = reactive([
   ...(book.data.pages
     ? [
@@ -193,11 +191,7 @@ const items = reactive([
                 : $t("pages.book.unknown")
             }}
           </p>
-          <StarsRate
-            class="mb-4"
-            :reviews="bookRating?.reviews?.length"
-            :rating="bookRating?.rating"
-          />
+          <StarsRate class="mb-px" :book="book.data" />
         </header>
         <ContentRendererMarkdown
           v-if="bookDescription"
@@ -276,5 +270,9 @@ const items = reactive([
       :key="query.type + query.query"
       :query="query"
     />
+    <!-- Comments -->
+    <div class="mt-8">
+      <DisqusComments :identifier="`/book/${book.data._id}`" />
+    </div>
   </Container>
 </template>

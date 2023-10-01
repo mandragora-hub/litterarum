@@ -29,8 +29,13 @@ export default defineNuxtConfig({
     "@nuxt/image-edge",
     "@nuxtjs/plausible",
     "nuxt-og-image",
+    "nuxt-disqus",
     "nuxt-simple-sitemap",
   ],
+
+  disqus: {
+    shortname: "litterarum-1",
+  },
 
   plausible: {
     apiHost: "https://plausible.redania.sbs/",

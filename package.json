@@ -24,6 +24,7 @@
     "eslint-plugin-nuxt": "^4.0.0",
     "lru-cache": "^10.0.1",
     "nuxt": "^3.7.1",
+    "nuxt-disqus": "^1.0.1",
     "nuxt-og-image": "^2.0.25",
     "nuxt-simple-sitemap": "^3.2.7",
     "ohash": "^1.1.3",
