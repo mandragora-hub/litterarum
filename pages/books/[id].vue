@@ -2,7 +2,6 @@
 import { parseMarkdown } from "~/utils/parseMarkdown";
 import { QUERY_LIST } from "~/constants/lists";
 
-const config = useRuntimeConfig();
 const app = useAppConfig();
 
 const route = useRoute();
@@ -13,11 +12,6 @@ const { t } = useI18n();
 const queries = $computed(() => [QUERY_LIST.book[5]]);
 
 const readerLink = $computed(() => `reader/${book.data.ePubFile}`);
-
-const downloadLink = (pdfFile: string) => {
-  const baseURL = `${config.public.apiBaseUrl}/${config.public.apiVersion}`;
-  return `${baseURL}/files/${pdfFile}`;
-};
 
 const bookDescription = ref<null | Record<string, any>>();
 bookDescription.value = await parseMarkdown(
@@ -159,7 +153,7 @@ const items = reactive([
           block
           size="xl"
           target="_blank"
-          :to="downloadLink(book.data.pdfFile)"
+          :to="book.data.pdfFile"
         />
         <!-- <Button text="Download Epub" type="secondary" size="xl" class="uppercase" /> -->
         <UButton
@@ -219,7 +213,7 @@ const items = reactive([
         </div>
       </div>
       <!-- About book, tags, and share options -->
-      <div class="w-full flex flex-col lg:pl-24 space-y-8 divide-y">
+      <div class="flex flex-col grow lg:pl-24 space-y-8 divide-y">
         <div v-if="book.data.tags.length > 0" class="flex flex-col space-y-2">
           <h3 class="font-bold text-xl capitalize">
             {{ $t("pages.book.tags") }}
