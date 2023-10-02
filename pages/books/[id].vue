@@ -21,9 +21,8 @@ bookDescription.value = await parseMarkdown(
 const formatDate = (date: Date) => {
   const parse = new Date(date);
   const intl = new Intl.DateTimeFormat("en-US", {
-    weekday: "short",
     year: "numeric",
-    month: "long",
+    month: "2-digit",
     day: "numeric",
   }).format(parse);
   return intl.toString();
@@ -213,7 +212,7 @@ const items = reactive([
         </div>
       </div>
       <!-- About book, tags, and share options -->
-      <div class="flex flex-col grow lg:pl-24 space-y-8 divide-y">
+      <div class="flex flex-col grow space-y-8 divide-y">
         <div v-if="book.data.tags.length > 0" class="flex flex-col space-y-2">
           <h3 class="font-bold text-xl capitalize">
             {{ $t("pages.book.tags") }}
@@ -250,7 +249,7 @@ const items = reactive([
               class="flex flex-row space-x-1 items-center"
             >
               <UIcon :name="item.icon" class="text-xl" />
-              <p class="text-md capitalize">
+              <p class="text-md whitespace-nowrap capitalize">
                 {{ $t(item.name) }}: {{ item.value }}
               </p>
             </li>
