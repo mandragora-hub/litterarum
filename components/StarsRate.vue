@@ -27,23 +27,21 @@ const bookPostedDate = computed(() => {
     <span
       class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"
     ></span>
-
+    <NuxtLink to="#disqus_thread" class="font-normal text-blue-400">
+      <DisqusCount :identifier="`/book/${book._id}`"
+    /></NuxtLink>
+    <span
+      v-if="bookRating?.rating"
+      class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"
+    ></span>
     <UIcon
       v-if="bookRating?.rating"
       name="i-ph-star-fill"
       class="text-yellow-500"
     />
     <!-- <UIcon v-else name="i-ph-star" class="text-yellow-500" /> -->
-    <p v-if="bookRating?.rating" class="ml-2 font-bold dark:text-white">
+    <p v-if="bookRating?.rating" class="ml-2 dark:text-white">
       {{ bookRating.rating }}
     </p>
-    <span
-      v-if="bookRating?.rating"
-      class="w-1 h-1 mx-1.5 bg-gray-500 rounded-full dark:bg-gray-400"
-    ></span>
-
-    <NuxtLink to="#disqus_thread" class="font-normal text-blue-400">
-      <DisqusCount :identifier="`/book/${book._id}`"
-    /></NuxtLink>
   </div>
 </template>
