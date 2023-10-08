@@ -62,6 +62,22 @@ export function getBook(id: string): Promise<Result<Book>> {
   return fetchLitterarumApi(`books/${id}`);
 }
 
+export async function getBookBySlug(slug: string): Promise<Result<Book>> {
+  const promise: Promise<Result<Book[]>> = fetchLitterarumApi(
+    `books?slug=${slug}`
+  );
+  const result = await promise;
+  if (result.data.length > 0) {
+    const newResult: Result<Book> = {
+      ...result,
+      data: result.data[0],
+    };
+    return newResult;
+  }
+
+  throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
+}
+
 export function downloadBook(id: string, type: TypeFile = "pdf"): Promise<any> {
   return fetchLitterarumApi(`books/${id}/download?type=${type}`);
 }

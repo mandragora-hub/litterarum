@@ -47,6 +47,7 @@ export interface Author {
 export interface Book {
   _id: string;
   title: string;
+  slug: string;
   subtitle?: string;
   description?: string;
   basename: string;

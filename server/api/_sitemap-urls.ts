@@ -20,7 +20,7 @@ export default cachedEventHandler(
     ]);
 
     return [...books.data].map((p) => {
-      return { loc: `/books/${p._id}`, lastmod: p.updatedAt };
+      return { loc: `/books/${p.slug}`, lastmod: p.updatedAt };
     });
   },
   {

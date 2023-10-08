@@ -5,9 +5,9 @@ import { QUERY_LIST } from "~/constants/lists";
 const app = useAppConfig();
 
 const route = useRoute();
-const bookId = route.params.id as string;
+const slug = route.params.slug as string;
 
-const book = await getBook(bookId);
+const book = await getBookBySlug(slug);
 const { t } = useI18n();
 const queries = $computed(() => [QUERY_LIST.book[5]]);
 
@@ -178,11 +178,15 @@ const items = reactive([
             }}</span>
           </h1>
           <p class="uppercase font-light">
-            {{
-              book.data?.author?.name
-                ? `${$t("pages.book.by")} ${book.data.author.name}`
-                : $t("pages.book.unknown")
-            }}
+            <span v-if="book.data?.author?.name"
+              >{{ $t("pages.book.by") }}
+              <NuxtLink
+                class="underline cursor-pointer hover:opacity-80"
+                :href="`/authors/${book.data.author._id}`"
+                >{{ book.data.author.name }}</NuxtLink
+              ></span
+            >
+            <span v-else>{{ $t("pages.book.unknown") }}</span>
           </p>
           <StarsRate class="mb-px" :book="book.data" />
         </header>

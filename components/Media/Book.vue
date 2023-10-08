@@ -24,7 +24,7 @@ const cleanUrl = (url: string) => {
 </script>
 
 <template>
-  <NuxtLink :to="`/${type}/${item._id}`" class="w-full h-full p-2">
+  <NuxtLink :to="`/${type}/${item.slug}`" class="w-full h-full p-2">
     <div
       class="block rounded-lg bg-gray-400 aspect-[10/16] transition duration-400 hover:scale-105 hover:z-10"
     >
