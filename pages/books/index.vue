@@ -9,15 +9,15 @@ useInfiniteScroll(el, () => loadMore());
 
 const books = ref<Book[] | undefined>();
 const pages = ref(1);
-const initialData = await searchBooks("", pages.value, 5);
-books.value = initialData.data;
+const { data: initialData } = await searchBooks("", pages.value, 5);
+books.value = initialData.value?.data;
 
 const loadMore = async () => {
-  if (initialData.meta.totalPages <= pages.value) return;
+  if (initialData.value!.meta.totalPages <= pages.value) return;
 
   pages.value++;
-  const result = await searchBooks("", pages.value, 5);
-  books.value?.push(...result.data);
+  const { data: result } = await searchBooks("", pages.value, 5);
+  books.value?.push(...result.value!.data);
 };
 
 useSeoMeta({
@@ -25,13 +25,13 @@ useSeoMeta({
   ogTitle: `Listado de libros 📚️ - ${app.name}`,
   description: app.description,
   ogDescription: app.description,
-  ogImage: "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
+  ogImage:
+    "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
   twitterDescription: app.description,
   twitterTitle: `Listado de libros 📚️ - ${app.name}`,
-  twitterImage: "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
+  twitterImage:
+    "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
 });
-
-
 </script>
 <template>
   <Container>
@@ -45,7 +45,7 @@ useSeoMeta({
       </p>
     </header>
     <div
-      v-if="initialData.meta.count"
+      v-if="initialData?.meta.count"
       ref="el"
       class="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-5"
     >

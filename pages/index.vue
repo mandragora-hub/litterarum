@@ -3,7 +3,7 @@ import { QUERY_LIST } from "~/constants/lists";
 
 const AsyncWrapper = defineComponent(async (_, ctx) => {
   const list = await listMedia("books", queries[0].query, 1);
-  const item = await getBook(list.data[0]._id);
+  const { data: item } = await getBook(list.data[0]._id);
   return () => ctx.slots?.default?.({ item });
 });
 
@@ -20,7 +20,7 @@ useSeoMeta({
   twitterTitle: `${app.name} - ${app.tagline}`,
 });
 
-defineOgImageScreenshot()
+defineOgImageScreenshot();
 </script>
 <template>
   <Container>

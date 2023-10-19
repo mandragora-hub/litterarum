@@ -11,15 +11,15 @@ useInfiniteScroll(el, () => loadMore());
 
 const books = ref<Book[] | undefined>();
 const pages = ref(1);
-const initialData = await searchBooks(q, pages.value, 10);
-books.value = initialData.data;
+const { data: initialData } = await searchBooks(q, pages.value, 10);
+books.value = initialData.value?.data;
 
 const loadMore = async () => {
-  if (initialData.meta.totalPages <= pages.value) return;
+  if (initialData.value!.meta.totalPages <= pages.value) return;
 
   pages.value++;
-  const result = await searchBooks(q, pages.value, 10);
-  books.value?.push(...result.data);
+  const { data: result } = await searchBooks(q, pages.value, 10);
+  books.value?.push(...result.value!.data);
 };
 
 const queries = $computed(() => [QUERY_LIST.book[0], QUERY_LIST.book[1]]);
@@ -29,12 +29,13 @@ useSeoMeta({
   ogTitle: `Resultado de ${q} - ${app.name}`,
   description: app.description,
   ogDescription: app.description,
-  ogImage: "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
+  ogImage:
+    "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
   twitterDescription: app.description,
   twitterTitle: `Resultado de ${q} - ${app.name}`,
-  twitterImage: "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
+  twitterImage:
+    "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
 });
-
 </script>
 <template>
   <Container>
@@ -43,13 +44,13 @@ useSeoMeta({
         <h1 class="text-4xl">
           {{ capitalize($t("pages.search.results_for")) }}
           <span class="text-slate-500">{{
-            `${q} (${initialData.meta.count})`
+            `${q} (${initialData?.meta.count})`
           }}</span>
         </h1>
         <span class="mb-4 inline-block h-0.5 w-20 rounded bg-slate-700"></span>
       </header>
       <div
-        v-if="initialData.meta.count"
+        v-if="initialData?.meta.count"
         ref="el"
         class="grid grid-cols-2 gap-4 md:grid-cols-4 xl:grid-cols-5"
       >

@@ -1,5 +1,3 @@
-import { LRUCache } from "lru-cache";
-import { hash as ohash } from "ohash";
 import type {
   MediaType,
   PageResult,
@@ -9,65 +7,47 @@ import type {
   TypeFile,
 } from "../types";
 
-const cache = new LRUCache({
-  max: 500,
-  ttl: 2000 * 60 * 60, // 2 hour
-});
+type DataE = {
+  code: string;
+  message: string;
+};
 
-function _fetchLitterarumApi(
-  url: string,
-  params: Record<string, string | number | undefined> = {}
-) {
+export function fetchLitterarumApi<DataT = any>(url: string, options = {}) {
   const config = useRuntimeConfig();
-  if (params.language == null) {
-    const locale = useNuxtApp().$i18n.locale;
-    params.language = unref(locale);
-  }
-  return $fetch(url, {
+  return useFetch<DataT, DataE>(url, {
     baseURL: `${config.public.apiBaseUrl}/${config.public.apiVersion}`,
     // headers: {
     //   Authorization: `Bearer ${config.public.apiToken}`,
     // },
-    params,
+    ...options,
   });
 }
 
-export function fetchLitterarumApi(
-  url: string,
-  params: Record<string, string | number | undefined> = {}
-): Promise<any> {
-  const hash = ohash([url, params]);
-  if (!cache.has(hash)) {
-    cache.set(
-      hash,
-      _fetchLitterarumApi(url, params).catch((e) => {
-        cache.delete(hash);
-        throw e;
-      })
-    );
-  }
-  return Promise.resolve(cache.get(hash)!);
-}
-
-export function listMedia(
+export async function listMedia(
   type: MediaType,
   query: string,
   page: number,
   limit = 6
-): Promise<PageResult<Book>> {
-  return fetchLitterarumApi(`${type}/${query}`, { page, limit });
+) {
+  const result = await fetchLitterarumApi<PageResult<Book>>(
+    `${type}/${query}`,
+    {
+      params: { page, limit },
+    }
+  );
+  return result.data.value as NonNullable<PageResult<Book>>;
 }
 
-export function getBook(id: string): Promise<Result<Book>> {
-  return fetchLitterarumApi(`books/${id}`);
+export function getBook(id: string) {
+  return fetchLitterarumApi<Result<Book>>(`books/${id}`);
 }
 
 export async function getBookBySlug(slug: string): Promise<Result<Book>> {
-  const promise: Promise<Result<Book[]>> = fetchLitterarumApi(
+  const promise = await fetchLitterarumApi<Result<Book[]>>(
     `books?slug=${slug}`
   );
-  const result = await promise;
-  if (result.data.length > 0) {
+  const result = promise.data.value;
+  if (result && result.data.length > 0) {
     const newResult: Result<Book> = {
       ...result,
       data: result.data[0],
@@ -78,20 +58,28 @@ export async function getBookBySlug(slug: string): Promise<Result<Book>> {
   throw createError({ statusCode: 404, statusMessage: "Page Not Found" });
 }
 
-export function downloadBook(id: string, type: TypeFile = "pdf"): Promise<any> {
+export function downloadBook(id: string, type: TypeFile = "pdf") {
   return fetchLitterarumApi(`books/${id}/download?type=${type}`);
 }
 
-export function healthcheckServer(): Promise<HealthcheckResult> {
-  return fetchLitterarumApi(`healthcheck`);
+export function healthcheckServer() {
+  return fetchLitterarumApi<HealthcheckResult>(`healthcheck`);
 }
 
-export function searchBooks(
-  query: string,
-  page = 1,
-  limit = 5
-): Promise<PageResult<Book>> {
-  return fetchLitterarumApi("search/books", { q: query, page, limit });
+export function searchBooks(query: string, page = 1, limit = 5) {
+  return fetchLitterarumApi<PageResult<Book>>("search/books", {
+    q: query,
+    page,
+    limit,
+  });
+}
+
+export function incrementBookView(bookId: string) {
+  return fetchLitterarumApi(`books/${bookId}/hit/views`, { method: "POST" });
+}
+
+export function incrementBookDownload(bookId: string) {
+  return fetchLitterarumApi(`books/${bookId}/hit/download`, { method: "POST" });
 }
 
 // /**

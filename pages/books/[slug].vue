@@ -8,6 +8,7 @@ const route = useRoute();
 const slug = route.params.slug as string;
 
 const book = await getBookBySlug(slug);
+await incrementBookView(book.data._id)
 const { t } = useI18n();
 const queries = $computed(() => [QUERY_LIST.book[5]]);
 
@@ -153,6 +154,7 @@ const items = reactive([
           size="xl"
           target="_blank"
           :to="book.data.pdfFile"
+          @click="incrementBookDownload(book.data._id)"
         />
         <!-- <Button text="Download Epub" type="secondary" size="xl" class="uppercase" /> -->
         <UButton

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 // const runtime = useRuntimeConfig();
 
 const route = useRoute();
@@ -28,8 +28,9 @@ const { isReady, isLoading } = useAsyncState(
 // pointer-events: none;
 definePageMeta({
   layout: false,
-});
+}); 
 </script>
+-->
 <template>
   <div class="flex flex-col min-h-screen">
     <nav class="bg-white border-b dark:bg-gray-900">
@@ -43,9 +44,9 @@ definePageMeta({
         <div
           class="flex flex-col items-center text-center space-y-6 bg-white border shadow-lg py-8 my-8 mx-auto"
         >
-          <h1 class="text-xl font-bold text-blue-400">
+          <!-- <h1 class="text-xl font-bold text-blue-400">
             {{ `${book.data.title} - ${book.data?.author?.name || $t("pages.book.unknown")}` }}
-          </h1>
+          </h1> -->
 
           <div class="flex flex-col space-y-2">
             <p>
@@ -53,7 +54,7 @@ definePageMeta({
               {{ $t("pages.download.size") }} 8MB
             </p>
             <p>{{ $t("pages.download.downloads", { amount: 8 }) }}</p>
-            <a
+            <!-- <a
               ref="link"
               class="text-white bg-blue-700 hover:bg-blue-800 rounded-lg text-sm px-5 py-2.5 mx-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center font-bold"
             >
@@ -68,7 +69,7 @@ definePageMeta({
                 <UIcon name="i-mdi-download" class="inline w-4 h-4 mr-2" />
                 {{ $t("pages.download.download") }}
               </div>
-            </a>
+            </a> -->
           </div>
           <!-- <div>
             <p>Por favor, completa el capcha para continuar.</p>

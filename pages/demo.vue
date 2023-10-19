@@ -3,7 +3,7 @@ import { storeToRefs } from "pinia";
 import { useMainStore } from "~/stores/counter";
 
 // litterarum'api health check
-const healthcheck = await healthcheckServer();
+const { data: healthcheck } = await healthcheckServer();
 
 // tracks mouse position
 const { x, y } = useMouse();
