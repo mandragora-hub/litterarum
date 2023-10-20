@@ -13,7 +13,6 @@ watch(targetIsVisible, (isVisible) => setSearchBarOnNavbar(!isVisible));
 
 <template>
   <section ref="target" class="max-w-screen-xl px-4 py-8 mx-auto lg:py-16">
-    <MediaHeroBackground />
     <div class="flex flex-col items-center text-center">
       <h1
         class="uppercase max-w-2xl mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white"
