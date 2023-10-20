@@ -9,8 +9,8 @@ export const QUERY_LIST = {
     },
     {
       type: "books",
-      title: "components.carousel.trending_books",
-      query: "trending",
+      title: "components.carousel.most_downloaded_books",
+      query: "most_downloaded",
     },
     {
       type: "books",
@@ -31,6 +31,11 @@ export const QUERY_LIST = {
       type: "books",
       title: "components.carousel.you_may_like",
       query: "popular",
+    },
+    {
+      type: "books",
+      title: "components.carousel.trending_books",
+      query: "trending",
     },
   ],
   collection: <QueryItem[]>[

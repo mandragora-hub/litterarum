@@ -5,6 +5,7 @@
   "components": {
     "carousel": {
       "latest_books": "Últimos Libros",
+      "most_downloaded_books": "Libros mas descargado",
       "trending_books": "Libros de tendencias",
       "popular_books": "Libros Populares",
       "top_rated_books": "Libros Mejor Calificados",
