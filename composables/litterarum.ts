@@ -68,9 +68,11 @@ export function healthcheckServer() {
 
 export function searchBooks(query: string, page = 1, limit = 5) {
   return fetchLitterarumApi<PageResult<Book>>("search/books", {
-    q: query,
-    page,
-    limit,
+    params: {
+      q: query,
+      page,
+      limit,
+    },
   });
 }
 
