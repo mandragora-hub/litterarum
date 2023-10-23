@@ -7,12 +7,11 @@ const props = defineProps<{
   query: QueryItem;
 }>();
 
-const item = await listMedia(props.query.type, props.query.query, 1);
+const item = await listMedia(props.query.type, props.query.query, 1, 10);
 
-const defaultSettings = {
-  itemsToShow: 2,
-  snapAlign: "start",
-};
+const DEFAULT_ITEMS_TO_SHOW = 2;
+const DEFAULT_SNAP_ALIGN = "start";
+
 const breakpoints = {
   700: {
     itemsToShow: 4,
@@ -39,7 +38,11 @@ const breakpoints = {
       </NuxtLink>
     </template>
     <ClientOnly fallback-tag="span" fallback="Loading...">
-      <Carousel :settings="defaultSettings" :breakpoints="breakpoints">
+      <Carousel
+        :items-to-show="DEFAULT_ITEMS_TO_SHOW"
+        :snap-align="DEFAULT_SNAP_ALIGN"
+        :breakpoints="breakpoints"
+      >
         <Slide v-for="i in item.data" :key="i._id">
           <MediaBook :item="i" :type="query.type" />
         </Slide>
