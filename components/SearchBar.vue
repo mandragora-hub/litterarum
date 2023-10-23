@@ -12,7 +12,8 @@ const searchMatch = useDebounceFn(
   async (event: Event) => {
     const el = event.target as HTMLInputElement;
     const text = el.value;
-    result.value = await searchBooks(text);
+    const { data } = await searchBooks(text);
+    result.value = data.value;
   },
   1000,
   { maxWait: 5000 }
