@@ -7,7 +7,7 @@ const AsyncWrapper = defineComponent(async (_, ctx) => {
   return () => ctx.slots?.default?.({ item });
 });
 
-const queries = $computed(() => [QUERY_LIST.book[1], QUERY_LIST.book[2]]);
+const queries = $computed(() => [QUERY_LIST.book[0], QUERY_LIST.book[1], QUERY_LIST.book[2]]);
 
 const app = useAppConfig();
 
@@ -24,12 +24,12 @@ defineOgImageScreenshot();
 </script>
 <template>
   <Container>
-    <AsyncWrapper>
+    <!-- <AsyncWrapper>
       <template #default="{ item }">
         <MediaHero :item="item" />
       </template>
-    </AsyncWrapper>
-    <GridAutoQuery :query="QUERY_LIST.book[0]" />
+    </AsyncWrapper> -->
+    <!-- <GridAutoQuery :query="QUERY_LIST.book[0]" /> -->
     <div class="flex flex-col">
       <CarouselAutoQuery
         v-for="query of queries"

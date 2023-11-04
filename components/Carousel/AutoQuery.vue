@@ -30,10 +30,7 @@ const breakpoints = {
       {{ $t(query.title) }}
     </template>
     <template #more>
-      <NuxtLink
-        class="opacity-50 hover:(opacity-50 text-primary) transition"
-        :to="`/${query.type}/category/${query.query}`"
-      >
+      <NuxtLink class="opacity-50 hover:(opacity-50 text-primary) transition">
         {{ $t("components.carousel.explore_more") }}
       </NuxtLink>
     </template>

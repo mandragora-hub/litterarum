@@ -7,6 +7,9 @@ export default defineNuxtConfig({
       apiVersion: process.env.NUXT_PUBLIC_API_VERSION || "api/v1",
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "http://localhost:3333/",
       recaptchaSiteKey: process.env.NUXT_RECAPTCHA_SITE_KEY,
+      disqus: {
+        shortname: "litterarum-1",
+      },
     },
   },
 
@@ -25,17 +28,12 @@ export default defineNuxtConfig({
     "@nuxthq/ui",
     "@nuxtjs/i18n",
     "@pinia/nuxt",
+    "@nuxt/image",
     "@nuxt/content",
-    "@nuxt/image-edge",
     "@nuxtjs/plausible",
     "nuxt-og-image",
-    "nuxt-disqus",
     "nuxt-simple-sitemap",
   ],
-
-  disqus: {
-    shortname: "litterarum-1",
-  },
 
   plausible: {
     apiHost: "https://plausible.redania.sbs/",

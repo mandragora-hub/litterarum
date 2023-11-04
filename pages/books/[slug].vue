@@ -8,7 +8,7 @@ const route = useRoute();
 const slug = route.params.slug as string;
 
 const book = await getBookBySlug(slug);
-await incrementBookView(book.data._id)
+await incrementBookView(book.data._id);
 const { t } = useI18n();
 const queries = $computed(() => [QUERY_LIST.book[5]]);
 
