@@ -1,9 +1,10 @@
+<script setup lang="ts">
+const { main } = useGlobalHtmlElement();
+</script>
 <template>
   <div>
-    <slot name="app-before" />
-    <div id="app-before"></div>
     <MediaHeroBackground />
-    <div class="flex flex-col min-h-screen">
+    <div ref="main" class="flex flex-col min-h-screen">
       <slot name="header">
         <Navbar />
       </slot>

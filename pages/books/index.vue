@@ -3,9 +3,8 @@ import type { Book } from "~/types";
 
 const { t } = useI18n();
 const app = useAppConfig();
-
 const el = ref<HTMLElement | null>(null);
-useInfiniteScroll(el, () => loadMore());
+const { main } = useGlobalHtmlElement();
 
 const books = ref<Book[] | undefined>();
 const pages = ref(1);
@@ -13,6 +12,7 @@ const { data: initialData } = await searchBooks("", pages.value, 5);
 books.value = initialData.value?.data;
 
 const loadMore = async () => {
+  console.log("calling load more", initialData?.value?.meta.count);
   if (initialData.value!.meta.totalPages <= pages.value) return;
 
   pages.value++;
@@ -20,6 +20,7 @@ const loadMore = async () => {
   books.value?.push(...result.value!.data);
 };
 
+useInfiniteScroll(main, loadMore, {distance: 5});
 useSeoMeta({
   title: `Listado de libros 📚️ - ${app.name}`,
   ogTitle: `Listado de libros 📚️ - ${app.name}`,
