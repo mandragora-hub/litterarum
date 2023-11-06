@@ -32,8 +32,21 @@ export default defineNuxtConfig({
     "@nuxt/content",
     "@nuxtjs/plausible",
     "nuxt-og-image",
+    "@nuxtjs/robots",
     "nuxt-simple-sitemap",
   ],
+
+  robots: {
+    rules: [
+      {
+        UserAgent: "*",
+        Allow: "/",
+      },
+      {
+        Sitemap: `${process.env.NUXT_PUBLIC_SITE_URL}sitemap.xml`,
+      },
+    ],
+  },
 
   plausible: {
     apiHost: "https://plausible.redania.sbs/",
