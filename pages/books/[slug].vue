@@ -173,7 +173,7 @@ const items = reactive([
       <!-- information -->
       <div class="flex flex-col grow">
         <header class="border-b mb-4">
-          <h1 class="text-3xl font-bold capitalize">
+          <h1 class="text-3xl font-bold first-letter:capitalize">
             {{ book.data.title }}
             <span v-if="book.data.subtitle" class="text-lg font-light">{{
               book.data.subtitle

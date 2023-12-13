@@ -34,7 +34,7 @@ defineProps<{
           :class="{ 'opacity-60': index !== items.length - 1 }"
           :to="item.href"
         >
-          <span class="capitalize">{{ item.text }}</span>
+          <span class="inline-block first-letter:capitalize">{{ item.text }}</span>
         </NuxtLink>
         <span
           v-if="index < items.length - 1"
