@@ -21,8 +21,7 @@ import {
 //   },
 // };
 
-const { locale, availableLocales } = useLocale();
-const { t } = useI18n();
+const { t, locale, availableLocales, setLocale } = useI18n();
 
 const props = defineProps({
   type: {
@@ -32,16 +31,16 @@ const props = defineProps({
 });
 
 const currentStyle = toRef(props, "type");
-// const localeSetting = useState<string>("locale.setting");
 </script>
 
 <template>
   <div class="flex items-center">
     <Listbox
       v-if="currentStyle === 'dropdown-right-top'"
-      v-model="locale"
       as="div"
       class="relative flex items-center"
+      :value="locale"
+      @update:model-value="(newValue) => setLocale(newValue)"
     >
       <ListboxLabel class="sr-only">Theme</ListboxLabel>
       <ListboxButton

@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 const app = useAppConfig();
-const { locale } = useLocale();
-const { t } = useI18n();
+const { t, locale } = useI18n();
 
 useHead({
   title: app.name,
