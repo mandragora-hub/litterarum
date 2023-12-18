@@ -11,7 +11,7 @@ const { x, y } = useMouse();
 const mainStore = useMainStore(); // extract specific store properties
 const { counter, doubleCounter } = storeToRefs(mainStore);
 
-const { locale, availableLocales } = useLocale();
+const { locale, availableLocales } = useI18n();
 
 let headlessuiToggleTest = $ref(false);
 const setHeadlessuiToggleTest = (e: boolean) => (headlessuiToggleTest = e);
