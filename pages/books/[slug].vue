@@ -128,9 +128,9 @@ const shareOptions = ref({
   text: `${book.data.title} - ${app.name}`,
   url: isClient ? location.href : "",
 });
-const { share, isSupported: isSupportedWebShareAPI  } = useShare(shareOptions);
+const { share, isSupported: isSupportedWebShareAPI } = useShare(shareOptions);
 const shareBook = () => {
-  share().catch(err => err);
+  share().catch((err) => err);
 };
 </script>
 <template>
@@ -140,22 +140,7 @@ const shareBook = () => {
     <div class="flex flex-col lg:flex-row border-b pb-8 space-y-4 lg:space-x-8">
       <!-- image, book cover and download buttons  -->
       <div class="flex flex-col space-y-4">
-        <div
-          class="h-96 w-full rounded-lg bg-gray-400 aspect-[10/16] transition duration-400 hover:scale-105 hover:z-10"
-        >
-          <NuxtImg
-            v-if="book.data.coverUrl"
-            width="400"
-            height="600"
-            format="webp"
-            :src="book.data.coverUrl"
-            :alt="book.data.title || book.data.author?.name"
-            class="w-full h-full rounded-lg object-cover"
-          />
-          <div v-else class="h-full opacity-10 flex">
-            <UIcon name="i-mdi-rabbit" class="m-auto text-4xl" />
-          </div>
-        </div>
+        <MediaBookCover class="h-96" :src="book.data.coverUrl" />
         <!-- download options buttons  -->
         <UButton
           v-if="book.data.pdfFile"
@@ -254,7 +239,10 @@ const shareBook = () => {
             </div>
           </div>
         </div>
-        <div v-if="!isSupportedWebShareAPI" class="flex flex-col space-y-2 pt-8 first:pt-0">
+        <div
+          v-if="!isSupportedWebShareAPI"
+          class="flex flex-col space-y-2 pt-8 first:pt-0"
+        >
           <h3 class="font-bold text-xl capitalize">
             {{ $t("pages.book.share") }}
           </h3>
