@@ -254,7 +254,7 @@ const shareBook = () => {
             </div>
           </div>
         </div>
-        <div class="flex flex-col space-y-2 pt-8 first:pt-0">
+        <div v-if="!isSupportedWebShareAPI" class="flex flex-col space-y-2 pt-8 first:pt-0">
           <h3 class="font-bold text-xl capitalize">
             {{ $t("pages.book.share") }}
           </h3>
