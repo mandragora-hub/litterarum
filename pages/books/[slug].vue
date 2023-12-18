@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { isClient } from "@vueuse/shared";
 import { parseMarkdown } from "~/utils/parseMarkdown";
 import { QUERY_LIST } from "~/constants/lists";
 
@@ -121,6 +122,16 @@ const items = reactive([
     href: "#",
   },
 ]);
+
+const shareOptions = ref({
+  title: `${book.data.title} - ${app.name}`,
+  text: `${book.data.title} - ${app.name}`,
+  url: isClient ? location.href : "",
+});
+const { share, isSupported: isSupportedWebShareAPI  } = useShare(shareOptions);
+const shareBook = () => {
+  share().catch(err => err);
+};
 </script>
 <template>
   <Container>
@@ -167,6 +178,16 @@ const items = reactive([
           size="xl"
           target="_blank"
           :to="readerLink"
+        />
+        <UButton
+          v-if="isSupportedWebShareAPI"
+          icon="i-ph-share-network-fill"
+          :label="$t('pages.book.options.share')"
+          color="gray"
+          variant="solid"
+          block
+          size="xl"
+          @click="shareBook"
         />
         <!-- <Button text="Send via e-mail" type="secondary" size="md" class="uppercase" /> -->
       </div>
@@ -227,7 +248,7 @@ const items = reactive([
             <div
               v-for="(item, key) in book.data.tags"
               :key="key"
-              class="text-sm cursor-pointer border bg-slate-50 hover:bg-slate-100 px-2 py-1 rounded capitalize text-black"
+              class="text-sm cursor-pointer border bg-slate-50 hover:bg-slate-100 px-2 py-1 rounded capitalize text-black dark:text-white dark:bg-slate-800 dark:border-slate-700"
             >
               <span>{{ item.tag }}</span>
             </div>
@@ -237,12 +258,7 @@ const items = reactive([
           <h3 class="font-bold text-xl capitalize">
             {{ $t("pages.book.share") }}
           </h3>
-          <div class="flex flex-wrap gap-2">
-            <UButton icon="i-mdi-facebook" color="blue" square />
-            <UButton icon="i-mdi-twitter" color="sky" square />
-            <UButton icon="i-mdi-whatsapp" color="emerald" square />
-            <UButton icon="i-mdi-plus" color="black" square variant="ghost" />
-          </div>
+          <SocialMediaButtons />
         </div>
         <div class="flex flex-col space-y-2 pt-8">
           <h3 class="font-bold text-xl capitalize">

@@ -33,11 +33,17 @@
     "hero": {
       "header": "Descargar libros electrónicos gratuitos",
       "subtitle": "Redescubre los clásicos con libros de dominio público"
+    },
+    "social_media_buttons": {
+      "share_on": "Compartir en {brand}",
+      "send_by_email": "Enviar por correo",
+      "copy_to_clipboard": "Copiar al portapapeles",
+      "copied": "Copiado "
     }
   },
   "pages": {
     "index": {
-      "title_template": "Descarga libros gratis en PDF y EPUB",
+      "title_template": "Descarga libros gratis en00 PDF y EPUB",
       "header_description": "Litterarum es una biblioteca virtual para compartir libros en diferentes formatos para los estudiantes y amantes de la lectura. Nuestro objetivo es publicar contenido gratuito que puedan enriquecer la formación de quienes quieran leerlos. Este proyecto es una pequeña contribución a todo ese inmenso mundo de información que circula por la red."
     },
     "demo": {
@@ -66,7 +72,8 @@
       "share": "compartir",
       "options": {
         "download_pdf": "Descargar en PDF",
-        "read_online": "Leer en línea"
+        "read_online": "Leer en línea",
+        "share": "Compartir"
       }
     },
     "download": {

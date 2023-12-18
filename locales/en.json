@@ -33,6 +33,12 @@
     "hero": {
       "header": "Download free ebooks",
       "subtitle": "Rediscover the classics with public domain books"
+    },
+    "social_media_buttons": {
+      "share_on": "Share on {brand}",
+      "send_by_email": "Send by email",
+      "copy_to_clipboard": "Copy to clipboard",
+      "copied": "Copied"
     }
   },
   "pages": {
@@ -66,7 +72,8 @@
       "share": "share",
       "options": {
         "download_pdf": "Download PDF",
-        "read_online": "Read online"
+        "read_online": "Read online",
+        "share": "Share"
       }
     },
     "download": {
