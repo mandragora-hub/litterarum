@@ -7,7 +7,7 @@ function basicFetch(url: string) {
   });
 }
 
-export default cachedEventHandler(
+export default defineSitemapEventHandler(
   async () => {
     const [
       books,
@@ -20,11 +20,10 @@ export default cachedEventHandler(
     ]);
 
     return [...books.data].map((p) => {
-      return { loc: `/books/${p.slug}`, lastmod: p.updatedAt };
+      return {
+        loc: `/books/${p.slug}`,
+        lastmod: p.updatedAt,
+      };
     });
-  },
-  {
-    name: "sitemap-dynamic-urls",
-    maxAge: 60 * 10, // cache URLs for 10 minutes
   }
 );

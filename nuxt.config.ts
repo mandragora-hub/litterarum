@@ -62,6 +62,9 @@ export default defineNuxtConfig({
 
   sitemap: {
     exclude: ["/demo", "/search"],
+    sources: [
+      '/api/__sitemap__/urls',
+    ]
   },
 
   app: {
