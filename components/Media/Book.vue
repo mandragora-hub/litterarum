@@ -11,16 +11,6 @@ withDefaults(
   }
 );
 
-const cleanUrl = (url: string) => {
-  // doing this we avoid the mixed content error in modern browsers
-  const urlObj = new URL(url);
-
-  if (urlObj.protocol === "http:") {
-    urlObj.protocol = "https:";
-  }
-
-  return urlObj.toString();
-};
 </script>
 
 <template>
