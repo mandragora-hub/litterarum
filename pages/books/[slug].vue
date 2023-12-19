@@ -112,16 +112,18 @@ useSeoMeta({
   twitterImage: book.data.coverUrl,
 });
 
-const items = reactive([
-  {
-    text: t("components.breadcrumbs.books"),
-    href: "/books",
-  },
-  {
-    text: book.data.title || "",
-    href: "#",
-  },
-]);
+const breadcrumbsLinks = reactive([{
+  label: t("components.breadcrumbs.home"),
+  icon: 'i-heroicons-home',
+  to: '/'
+}, {
+  label: t("components.breadcrumbs.books"),
+  icon: 'i-heroicons-square-3-stack-3d',
+  to: "/books"
+}, {
+  label: book.data.title,
+  icon: 'i-heroicons-link'
+}])
 
 const shareOptions = ref({
   title: `${book.data.title} - ${app.name}`,
@@ -135,7 +137,7 @@ const shareBook = () => {
 </script>
 <template>
   <Container>
-    <Breadcrumbs :items="items" class="-mt-4 mb-6" />
+    <UBreadcrumb :links="breadcrumbsLinks" class="mb-6" />
     <!-- book overview -->
     <div class="flex flex-col lg:flex-row border-b pb-8 space-y-4 lg:space-x-8">
       <!-- image, book cover and download buttons  -->
