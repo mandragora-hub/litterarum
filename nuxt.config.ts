@@ -25,7 +25,7 @@ export default defineNuxtConfig({
 
   modules: [
     "@vueuse/nuxt",
-    "@nuxthq/ui",
+    "@nuxt/ui",
     "@nuxtjs/i18n",
     "@pinia/nuxt",
     "@nuxt/image",
