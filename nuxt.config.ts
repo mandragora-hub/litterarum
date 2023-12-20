@@ -35,7 +35,6 @@ export default defineNuxtConfig({
     "@nuxtjs/plausible",
     "nuxt-og-image",
     "@nuxtjs/robots",
-    "vue3-carousel-nuxt",
     "nuxt-simple-sitemap",
   ],
 
