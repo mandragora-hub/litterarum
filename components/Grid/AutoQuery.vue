@@ -9,8 +9,8 @@ const item = await listMedia(props.query.type, props.query.query, 1, 12);
 </script>
 
 <template>
-  <GridBase>
-    <template #title>
+  <!-- <GridBase> -->
+  <!-- <template #title>
       <div class="flex flex-col">
         <span class="text-4xl font-bold text-gray-800 dark:text-gray-100"
           >{{ $t("components.grid.recent_books") }}</span
@@ -29,11 +29,13 @@ const item = await listMedia(props.query.type, props.query.query, 1, 12);
           &rarr;
         </NuxtLink>
       </div>
-    </template>
-    <div class="grid grid-cols-2 gap-8 md:grid-cols-4 xl:grid-cols-6">
-      <div v-for="i in item.data" :key="i._id">
-        <MediaBook :item="i" :type="query.type" />
-      </div>
+    </template> -->
+  <div
+    class="grid grid-cols-3 gap-2 md:grid-cols-4 md:gap-4 xl:grid-cols-6"
+  >
+    <div v-for="i in item.data" :key="i._id" class="mb-2">
+      <MediaBook :item="i" :type="query.type" />
     </div>
-  </GridBase>
+  </div>
+  <!-- </GridBase> -->
 </template>

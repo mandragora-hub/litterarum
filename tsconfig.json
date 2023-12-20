@@ -4,6 +4,7 @@
   "compilerOptions": {
     "strict": true,
     "skipLibCheck": true,
+    "verbatimModuleSyntax": false,
     "types": [
       // ... your other types
       "node"

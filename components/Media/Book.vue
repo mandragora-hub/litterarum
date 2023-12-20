@@ -14,7 +14,7 @@ withDefaults(
 </script>
 
 <template>
-  <NuxtLink :to="`/${type}/${item.slug}`" class="w-full h-full p-2">
+  <NuxtLink :to="`/${type}/${item.slug}`" class="w-full h-full">
     <MediaBookCover class="block" :src="item.coverUrl" />
     <div class="text-left mt-2">
       <h5>{{ item.title }}</h5>

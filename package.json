@@ -36,6 +36,7 @@
     "@nuxt/ui": "^2.11.1",
     "@nuxtjs/robots": "^3.0.0",
     "@pinia/nuxt": "^0.5.1",
+    "@splidejs/vue-splide": "^0.6.12",
     "epubjs": "^0.3.93",
     "pinia": "^2.1.7",
     "vue3-disqus": "^1.0.6"

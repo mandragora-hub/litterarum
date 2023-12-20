@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import "vue3-carousel/dist/carousel.css";
-import { Carousel, Navigation, Slide, Pagination } from "vue3-carousel";
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
+import type { Options } from "@splidejs/vue-splide";
+// import "@splidejs/vue-splide/css";
 import type { QueryItem } from "~/types";
 
 const props = defineProps<{
@@ -9,45 +10,47 @@ const props = defineProps<{
 
 const item = await listMedia(props.query.type, props.query.query, 1, 10);
 
-const DEFAULT_ITEMS_TO_SHOW = 2;
-const DEFAULT_SNAP_ALIGN = "start";
+// const DEFAULT_ITEMS_TO_SHOW = 2;
+// const DEFAULT_SNAP_ALIGN = "start";
 
 const breakpoints = {
+  0: {
+    perPage: 2,
+    gap: 5,
+  },
   700: {
-    itemsToShow: 4,
-    snapAlign: "start",
+    perPage: 3,
+    gap: 10,
   },
   1024: {
-    itemsToShow: 6,
-    snapAlign: "start",
+    perPage: 6,
+    gap: 20,
   },
 };
+const options = reactive<Options>({
+  breakpoints,
+  rewind: true,
+  gap: 20,
+  perPage: 6,
+});
 </script>
 
 <template>
-  <CarouselBase>
-    <template #title>
-      {{ $t(query.title) }}
-    </template>
-    <template #more>
-      <NuxtLink class="opacity-50 hover:(opacity-50 text-primary) transition">
-        {{ $t("components.carousel.explore_more") }}
-      </NuxtLink>
-    </template>
-    <ClientOnly fallback-tag="span" fallback="Loading...">
-      <Carousel
-        :items-to-show="DEFAULT_ITEMS_TO_SHOW"
-        :snap-align="DEFAULT_SNAP_ALIGN"
-        :breakpoints="breakpoints"
-      >
-        <Slide v-for="i in item.data" :key="i._id">
+  <ClientOnly>
+    <CarouselBase>
+      <template #title>
+        {{ $t(query.title) }}
+      </template>
+      <template #more>
+        <NuxtLink class="opacity-50 hover:(opacity-50 text-primary) transition">
+          {{ $t("components.carousel.explore_more") }}
+        </NuxtLink>
+      </template>
+      <Splide :options="options">
+        <SplideSlide v-for="i in item.data" :key="i._id">
           <MediaBook :item="i" :type="query.type" />
-        </Slide>
-        <template #addons>
-          <Navigation />
-          <Pagination />
-        </template>
-      </Carousel>
-    </ClientOnly>
-  </CarouselBase>
+        </SplideSlide>
+      </Splide>
+    </CarouselBase>
+  </ClientOnly>
 </template>

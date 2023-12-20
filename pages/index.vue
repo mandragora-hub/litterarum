@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { QUERY_LIST } from "~/constants/lists";
 
-const AsyncWrapper = defineComponent(async (_, ctx) => {
-  const list = await listMedia("books", queries[0].query, 1);
-  const { data: item } = await getBook(list.data[0]._id);
-  return () => ctx.slots?.default?.({ item });
-});
+// const AsyncWrapper = defineComponent(async (_, ctx) => {
+//   const list = await listMedia("books", queries[0].query, 1);
+//   const { data: item } = await getBook(list.data[0]._id);
+//   return () => ctx.slots?.default?.({ item });
+// });
 
 const queries = $computed(() => [QUERY_LIST.book[0], QUERY_LIST.book[1], QUERY_LIST.book[2]]);
 
@@ -29,8 +29,8 @@ defineOgImageScreenshot();
         <MediaHero :item="item" />
       </template>
     </AsyncWrapper> -->
-    <!-- <GridAutoQuery :query="QUERY_LIST.book[0]" /> -->
     <div class="flex flex-col">
+      <GridAutoQuery :query="QUERY_LIST.book[0]" />
       <CarouselAutoQuery
         v-for="query of queries"
         :key="query.type + query.query"

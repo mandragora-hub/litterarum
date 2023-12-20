@@ -13,6 +13,8 @@ export default defineNuxtConfig({
     },
   },
 
+  css: ["@splidejs/vue-splide/css"],
+
   routeRules: {
     // Render these routes with SPA
     "/books/reader/**": { ssr: false },
@@ -33,6 +35,7 @@ export default defineNuxtConfig({
     "@nuxtjs/plausible",
     "nuxt-og-image",
     "@nuxtjs/robots",
+    "vue3-carousel-nuxt",
     "nuxt-simple-sitemap",
   ],
 
