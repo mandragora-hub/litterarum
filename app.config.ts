@@ -12,4 +12,5 @@ export default defineAppConfig({
     primary: "blue",
     gray: "cool",
   },
+  nuxtIcon: {},
 });
