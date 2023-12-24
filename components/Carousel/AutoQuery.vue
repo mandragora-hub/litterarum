@@ -2,8 +2,9 @@
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import type { Options } from "@splidejs/vue-splide";
 // import "@splidejs/vue-splide/css";
+import '~/assets/css/splidejs-custom-theme.css'
 import type { QueryItem } from "~/types";
-
+ 
 const props = defineProps<{
   query: QueryItem;
 }>();
@@ -31,7 +32,7 @@ const options = reactive<Options>({
   breakpoints,
   rewind: true,
   gap: 20,
-  perPage: 6,
+  perPage: 6
 });
 </script>
 

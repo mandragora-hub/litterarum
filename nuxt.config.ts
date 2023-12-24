@@ -13,8 +13,6 @@ export default defineNuxtConfig({
     },
   },
 
-  css: ["@splidejs/vue-splide/css"],
-
   routeRules: {
     // Render these routes with SPA
     "/books/reader/**": { ssr: false },
@@ -64,9 +62,7 @@ export default defineNuxtConfig({
 
   sitemap: {
     exclude: ["/demo", "/search"],
-    sources: [
-      '/api/__sitemap__/urls',
-    ]
+    sources: ["/api/__sitemap__/urls"],
   },
 
   app: {
