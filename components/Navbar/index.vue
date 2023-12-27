@@ -20,7 +20,7 @@
           <Anchor
             class="hover:no-underline hover:text-slate-900 hover:dark:text-white text-lg flex self-center items-center"
             href="https://github.com/mandragora-hub/litterarum"
-            title="Github"
+            title="GitHub"
           >
             <UIcon name="i-mdi-github-face" />
           </Anchor>
@@ -46,13 +46,15 @@
         </ActionSheetBody>
         <UButton
           icon="i-mdi-github-face"
-          variant="link"
+          variant="solid"
+          label="GitHub"
           to="https://github.com/mandragora-hub/litterarum"
           target="_blank"
+          block
         />
-
         <UButton
-          text="Close"
+          :label="$t('others.close')"
+          block
           @click.prevent="toggleOptions(false)"
         />
       </ActionSheet>

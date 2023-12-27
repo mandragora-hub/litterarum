@@ -91,6 +91,7 @@
   "others": {
     "hours": "hour",
     "minutes": "minutes",
-    "words": "words"
+    "words": "words",
+    "close": "Close"
   }
 }
