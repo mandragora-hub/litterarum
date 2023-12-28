@@ -113,16 +113,16 @@ useSeoMeta({
 });
 
 const breadcrumbsLinks = reactive([{
-  label: t("components.breadcrumbs.home"),
-  icon: 'i-heroicons-home',
-  to: '/'
-}, {
-  label: t("components.breadcrumbs.books"),
-  icon: 'i-heroicons-square-3-stack-3d',
-  to: "/books"
-}, {
-  label: book.data.title,
-  icon: 'i-heroicons-link'
+    label: t("components.breadcrumbs.home"),
+    icon: 'i-heroicons-home',
+    to: '/'
+  }, {
+    label: t("components.breadcrumbs.books"),
+    icon: 'i-heroicons-square-3-stack-3d',
+    to: "/books"
+  }, {
+    label: book.data.title,
+    icon: 'i-heroicons-link'
 }])
 
 const shareOptions = ref({
@@ -276,8 +276,6 @@ const shareBook = () => {
       :query="query"
     />
     <!-- Comments -->
-    <div class="mt-8">
-      <DisqusComments :identifier="`/book/${book.data._id}`" />
-    </div>
+    <DisqusComments class="mt-8" :identifier="`/book/${book.data._id}`" />
   </Container>
 </template>

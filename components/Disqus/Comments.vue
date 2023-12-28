@@ -8,8 +8,23 @@ const props = defineProps({
     default: () => useNuxtApp()?.$disqusOptions?.shortname,
   },
 });
+
+const componentKey = ref(0);
+
+const forceRerender = () => {
+  componentKey.value += 1;
+};
+
+useDark({
+  onChanged: () => {
+    forceRerender();
+  },
+});
+
 </script>
 
 <template>
-  <VueDisqusComments v-bind="props" />
+  <div :class="props.class">
+    <VueDisqusComments :key="componentKey" v-bind="props" />
+  </div>
 </template>
