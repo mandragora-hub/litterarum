@@ -46,13 +46,13 @@
         </ActionSheetBody>
         <UButton
           icon="i-mdi-github-face"
-          variant="solid"
           label="GitHub"
           to="https://github.com/mandragora-hub/litterarum"
           target="_blank"
           block
         />
         <UButton
+          icon="i-mdi-close"
           :label="$t('others.close')"
           block
           @click.prevent="toggleOptions(false)"
