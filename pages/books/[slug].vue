@@ -181,11 +181,11 @@ const shareBook = () => {
       <!-- information -->
       <div class="flex flex-col grow">
         <header class="border-b mb-4">
-          <h1 class="text-3xl font-bold first-letter:capitalize">
+          <h1 class="text-3xl font-bold first-letter:capitalize text-balance">
             {{ book.data.title }}
-            <span v-if="book.data.subtitle" class="text-lg font-light">{{
+            <!-- <span v-if="book.data.subtitle" class="text-lg font-light">{{
               book.data.subtitle
-            }}</span>
+            }}</span> -->
           </h1>
           <p class="uppercase font-light">
             <span v-if="book.data?.author?.name"
