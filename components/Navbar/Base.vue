@@ -42,6 +42,10 @@ const toggleOptions = (show?: boolean) => {
     showOptions.value = !showOptions.value;
   }
 };
+const modal = useModal();
+const openSearchModal = () => {
+  modal.setSearchModal(true);
+}
 </script>
 
 <template>
@@ -79,7 +83,20 @@ const toggleOptions = (show?: boolean) => {
         </slot>
         <slot name="menu" />
         <!-- options:toggle -->
-        <div v-if="$slots['options']" class="flex-1 flex justify-end lg:hidden">
+        <div v-if="$slots['options']" class="flex-1 flex justify-end space-x-2 lg:hidden">
+          <button
+            class="flex items-center focus:outline-none"
+            @click="openSearchModal()"
+          >
+            <span
+              class="flex items-center text-gray-600 dark:text-gray-300 text-sm"
+              aria-hidden="true"
+            >
+              <UIcon name="i-mdi-magnify" class="text-xl"/>
+            </span>
+          </button>
+          <ModalSearch />
+
           <button
             class="flex items-center focus:outline-none"
             aria-label="Toggle Options Menu"

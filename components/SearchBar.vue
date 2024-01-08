@@ -15,8 +15,8 @@ const searchMatch = useDebounceFn(
     const { data } = await searchBooks(text);
     result.value = data.value;
   },
-  1000,
-  { maxWait: 5000 }
+  500,
+  { maxWait: 1000 }
 );
 
 defineShortcuts({
