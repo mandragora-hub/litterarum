@@ -1,9 +1,10 @@
-<script lang="ts" setup>
-const props = defineProps<{ class?: string }>();
+<script setup lang="ts">
+defineOptions({
+  inheritAttrs: false,
+});
 </script>
-
 <template>
-  <div class="container max-w-screen-xl mx-auto px-4" :class="props.class">
+  <div class="container max-w-screen-xl mx-auto px-4" :class="$attrs.class">
     <slot />
   </div>
 </template>

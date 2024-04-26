@@ -28,8 +28,8 @@ watch(
   () => q.value,
   async () => {
     pages.value = 1; // reset paging counter
-    books.value = undefined; 
-    
+    books.value = undefined;
+
     const { data: result } = await searchBooks(q.value, pages.value, 10);
     books.value = result.value?.data;
     initialData.value = result.value;
@@ -50,28 +50,15 @@ useSeoMeta({
   twitterImage:
     "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
 });
-
-const breadcrumbsLinks = reactive([
-  {
-    label: t("components.breadcrumbs.home"),
-    icon: "i-heroicons-home",
-    to: "/",
-  },
-  {
-    label: q,
-    icon: "i-heroicons-magnifying-glass",
-  },
-]);
 </script>
 <template>
-  <Container>
-    <UBreadcrumb :links="breadcrumbsLinks" class="mb-6" />
+  <div>
     <div class="flex flex-col space-y-8 border-b pb-12">
       <header class="">
         <h1 class="text-2xl">
-          {{ capitalize($t("pages.search.results_for")) }}
+          {{ $t("pages.search.results_for") }}
           <span class="text-slate-500 lowercase underline">{{
-            `${q} (${initialData?.meta.count})`
+            `${capitalizeFirstLetter(q)} (${initialData?.meta.count})`
           }}</span>
         </h1>
       </header>
@@ -100,5 +87,5 @@ const breadcrumbsLinks = reactive([
       :key="query.type + query.query"
       :query="query"
     />
-  </Container>
+  </div>
 </template>

@@ -32,19 +32,9 @@ useSeoMeta({
   twitterImage:
     "https://www.nicepng.com/png/full/6-66634_open-book-logo-png-sketch.png",
 });
-const breadcrumbsLinks = reactive([{
-  label: t("components.breadcrumbs.home"),
-  icon: 'i-heroicons-home',
-  to: '/'
-}, {
-  label: t("components.breadcrumbs.books"),
-  icon: 'i-heroicons-square-3-stack-3d',
-  to: "/books"
-}])
 </script>
 <template>
-  <Container>
-    <UBreadcrumb :links="breadcrumbsLinks" class="mb-6" />
+  <div>
     <header class="mb-4">
       <h1 class="text-4xl font-bold">
         {{ t("pages.bookIndex.header") }}
@@ -61,5 +51,5 @@ const breadcrumbsLinks = reactive([{
     >
       <MediaBook v-for="i in books" :key="i._id" :item="i" />
     </div>
-  </Container>
+  </div>
 </template>

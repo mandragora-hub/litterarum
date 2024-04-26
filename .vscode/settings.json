@@ -8,5 +8,6 @@
         "Splide",
         "splidejs"
     ],
-    "cSpell.language": "en,es-ES"
+    "cSpell.language": "en,es-ES",
+    "i18n-ally.keystyle": "nested"
 }
