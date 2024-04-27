@@ -89,6 +89,10 @@
       "see_more": "See More"
     }
   },
+  "footer": {
+    "made_for":"Made for the public domain.",
+    "design_by":"design by"
+  },
   "others": {
     "hours": "hour",
     "minutes": "minutes",
