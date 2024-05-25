@@ -49,7 +49,7 @@ export default defineNuxtConfig({
   },
 
   plausible: {
-    apiHost: "https://plausible.redania.sbs/",
+    apiHost: `${process.env.NUXT_PUBLIC_PLAUSIBLE_URL}`,
   },
 
   ui: {
