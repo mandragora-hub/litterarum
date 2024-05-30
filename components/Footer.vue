@@ -14,7 +14,8 @@ const { t } = useI18n();
         </div>
       </NuxtLink>
       <div class="text-xs text-gray-600 dark:text-gray-400">
-        {{ t("footer.made_for") }} Creative Commons,
+        {{ t("footer.made_for") }} <br />
+        Creative Commons,
         <NuxtLink
           class="hover:underline hover:text-blue inline-flex items-center gap-x-px"
           target="_blank"
@@ -39,7 +40,7 @@ const { t } = useI18n();
           <span
             class="block bg-blue-500 rounded px-1 py-0.5 text-white text-xs"
           >
-            {{ p.devDependencies.nuxt }}
+            {{ p.version }}
           </span>
         </div>
       </div>
