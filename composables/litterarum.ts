@@ -12,13 +12,17 @@ type DataE = {
   message: string;
 };
 
+
 export function fetchLitterarumApi<DataT = any>(url: string, options = {}) {
+  const { addOperation, removeOperation } = useGlobalFetchLoading();
   const config = useRuntimeConfig();
   return useFetch<DataT, DataE>(url, {
     baseURL: `${config.public.apiBaseUrl}/${config.public.apiVersion}`,
     // headers: {
     //   Authorization: `Bearer ${config.public.apiToken}`,
     // },
+    onRequest: () => addOperation(),
+    onResponse: () => removeOperation(),
     ...options,
   });
 }
